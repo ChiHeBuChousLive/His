@@ -18,6 +18,34 @@ public class HisDeotServiceImpl implements IHisDeptService {
     @Override
     public List<HisDept> selectHisDeptList(HisDept hisDept) {
         List<HisDept> hisDepts = hisDeptMapper.selectDeptList(hisDept);
+        System.out.println(hisDepts);
         return hisDepts;
     }
+
+    @Override
+    public int insertDept(HisDept hisDept) {
+        return hisDeptMapper.insertDept(hisDept);
+    }
+
+    @Override
+    public int deleteDeptById(Long deptId) {
+        return hisDeptMapper.deleteDeptById(deptId);
+    }
+
+    @Override
+    public int deleteDeptByIds(Long[] deptIds) {
+
+        return hisDeptMapper.deleteDeptByIds(deptIds);
+    }
+
+    @Override
+    public HisDept selectDeptById(Long deptId) {
+        return  hisDeptMapper.selectDeptById(deptId);
+    }
+
+    @Override
+    public int updateDept(HisDept hisDept) {
+        return hisDeptMapper.updateDept(hisDept);
+    }
+
 }

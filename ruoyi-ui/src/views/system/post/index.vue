@@ -273,6 +273,7 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.postId != undefined) {
+            console.log(this.form.postId)
             updatePost(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
