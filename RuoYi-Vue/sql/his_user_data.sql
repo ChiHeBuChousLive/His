@@ -1,0 +1,5 @@
+insert into his_user values(6,  123, '17861918900','人工', '诊所医生', '0','00', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','admin', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试人员');
+insert into his_user values(2,  133, '17861918900','人工', '主任医生', '0','00', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','admin', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试人员');
+insert into his_user values(3,  143, '17861918900','人工', '副主任医生', '0','00', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','admin', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试人员');
+insert into his_user values(4,  103, '17861918900','人工', '护士', '0','00', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','admin', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试人员');
+insert into his_user values(5,  103, '17861918900','人工', '诊所医生', '0','00', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','admin', '0', '0', '127.0.0.1', sysdate(), 'admin', sysdate(), '', null, '测试人员');

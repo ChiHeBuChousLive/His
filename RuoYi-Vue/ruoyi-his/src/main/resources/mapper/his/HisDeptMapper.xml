@@ -101,6 +101,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where dept_id = #{deptId}
 	</update>
 
-	
+
 </mapper>
 

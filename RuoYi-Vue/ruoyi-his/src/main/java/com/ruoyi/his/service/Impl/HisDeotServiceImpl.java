@@ -18,7 +18,7 @@ public class HisDeotServiceImpl implements IHisDeptService {
     @Override
     public List<HisDept> selectHisDeptList(HisDept hisDept) {
         List<HisDept> hisDepts = hisDeptMapper.selectDeptList(hisDept);
-        System.out.println(hisDepts);
+//        System.out.println(hisDepts);
         return hisDepts;
     }
 
