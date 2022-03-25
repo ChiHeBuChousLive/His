@@ -10,35 +10,35 @@ export function listUser(query) {
 }
 
 // 查询岗位详细
-export function getDept(deptId) {
+export function getUser(userId) {
   return request({
-    url: '/his/dept/' + deptId,
+    url: '/green/user/' + userId,
     method: 'get'
   })
 }
 
 // 新增岗位
-export function addDept(data) {
+export function addUser(data) {
   return request({
-    url: '/his/dept',
+    url: '/green/user',
     method: 'post',
     data: data
   })
 }
 
 // 修改岗位
-export function updateDept(data) {
+export function updateUser(data) {
   return request({
-    url: '/his/dept',
+    url: '/green/user',
     method: 'put',
     data: data
   })
 }
 
 // 删除岗位
-export function delDept(deptId) {
+export function delUser(userId) {
   return request({
-    url: '/his/dept/' + deptId,
+    url: '/green/user/' + userId,
     method: 'delete'
   })
 }

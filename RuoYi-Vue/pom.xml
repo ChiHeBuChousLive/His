@@ -211,6 +211,7 @@
         <module>ruoyi-common</module>
         <module>ruoyi-his</module>
         <module>ruoyi_green</module>
+        <module>ruoyi_condition</module>
     </modules>
     <packaging>pom</packaging>
 

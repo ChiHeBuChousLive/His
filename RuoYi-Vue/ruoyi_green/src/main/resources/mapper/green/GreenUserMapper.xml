@@ -40,69 +40,67 @@
     </select>
 
 
-<!--    <insert id="insertDept" parameterType="HisDept" useGeneratedKeys="true" keyProperty="deptId">-->
-<!--        insert into his_dept(-->
-<!--        <if test="deptId != null and deptId != 0">dept_id,</if>-->
-<!--        <if test="deptCode != null and deptCode != ''">dept_code,</if>-->
-<!--        <if test="deptName != null and deptName != ''">dept_name,</if>-->
-<!--        <if test="deptLeader != null and deptLeader != ''">dept_leader,</if>-->
-<!--        <if test="deptPhone != null and deptPhone != ''">dept_phone,</if>-->
-<!--        <if test="deptSort != null and deptSort != ''">dept_sort,</if>-->
-<!--        <if test="status != null and status != ''">status,</if>-->
-<!--        <if test="remark != null and remark != ''">remark,</if>-->
-<!--        <if test="createBy != null and createBy != ''">create_by,</if>-->
-<!--        create_time-->
-<!--        )values(-->
-<!--        <if test="deptId != null and deptId != 0">#{deptId},</if>-->
-<!--        <if test="deptCode != null and deptCode != ''">#{deptCode},</if>-->
-<!--        <if test="deptName != null and deptName != ''">#{deptName},</if>-->
-<!--        <if test="deptLeader != null and deptLeader != ''">#{deptLeader},</if>-->
-<!--        <if test="deptPhone != null and deptPhone != ''">#{deptPhone},</if>-->
-<!--        <if test="deptSort != null and deptSort != ''">#{deptSort},</if>-->
-<!--        <if test="status != null and status != ''">#{status},</if>-->
-<!--        <if test="remark != null and remark != ''">#{remark},</if>-->
-<!--        <if test="createBy != null and createBy != ''">#{createBy},</if>-->
-<!--        sysdate()-->
-<!--        )-->
-<!--    </insert>-->
+    <insert id="insertUser" parameterType="GreenUser" useGeneratedKeys="true" keyProperty="oldId">
+        insert into green_user(
+        <if test="oldId != null and oldId != 0">old_id,</if>
+        <if test="oldName != null and oldName != ''">old_name,</if>
+        <if test="oldDescribe != null and oldDescribe != ''">old_describe,</if>
+        <if test="oldCard != null and oldCard != ''">old_card,</if>
+        <if test="linkMan != null and linkMan != ''">linkman,</if>
+        <if test="linkPhone != null and linkPhone != ''">link_phone,</if>
+        <if test="status != null and status != ''">status,</if>
+        <if test="remark != null and remark != ''">remark,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="oldId != null and oldId != 0">#{oldId},</if>
+        <if test="oldName != null and oldName != ''">#{oldName},</if>
+        <if test="oldDescribe != null and oldDescribe != ''">#{oldDescribe},</if>
+        <if test="oldCard != null and oldCard != ''">#{oldCard},</if>
+        <if test="linkMan != null and linkMan != ''">#{linkMan},</if>
+        <if test="linkPhone != null and linkPhone != ''">#{linkPhone},</if>
+        <if test="status != null and status != ''">#{status},</if>
+        <if test="remark != null and remark != ''">#{remark},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
 
-<!--    <delete id="deleteDeptById" parameterType="Long">-->
-<!--		delete from his_dept where dept_id = #{deptId}-->
-<!--	</delete>-->
-
-
-
-<!--    <delete id="deleteDeptByIds" parameterType="Long">-->
-<!--        delete from his_dept where dept_id in-->
-<!--        <foreach collection="array" item="deptId" open="(" separator="," close=")">-->
-<!--            #{deptId}-->
-<!--        </foreach>-->
-<!--    </delete>-->
+    <delete id="deleteUserById" parameterType="Long">
+		delete from green_user where old_id = #{oldId}
+	</delete>
 
 
-<!--    <select id="selectDeptById" parameterType="Long" resultMap="HisDeptResult">-->
-<!--        <include refid="selectDeptVo"/>-->
-<!--        where dept_id = #{deptId}-->
-<!--    </select>-->
 
-<!--    <update id="updateDept" parameterType="HisDept">-->
-<!--        update his_dept-->
-<!--        <set>-->
-<!--            <if test="deptId != null and deptId != 0">dept_id=#{deptId},</if>-->
-<!--            <if test="deptCode != null and deptCode != ''">dept_code=#{deptCode},</if>-->
-<!--            <if test="deptName != null and deptName != ''">dept_name=#{deptName},</if>-->
-<!--            <if test="deptNum != null and deptNum != 0">dept_num=#{deptNum},</if>-->
-<!--            <if test="deptLeader != null and deptLeader != ''">dept_leader=#{deptLeader},</if>-->
-<!--            <if test="deptPhone != null and deptPhone != ''">dept_phone=#{deptPhone},</if>-->
-<!--            <if test="deptSort != null and deptSort != 0">dept_sort=#{deptSort},</if>-->
-<!--            <if test="status != null and status != ''">status=#{status},</if>-->
-<!--            <if test="remark != null and remark != ''">remark=#{remark},</if>-->
-<!--            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>-->
-<!--            update_time = sysdate()-->
-<!--        </set>-->
-<!--        where dept_id = #{deptId}-->
-<!--    </update>-->
+    <delete id="deleteUserByIds" parameterType="Long">
+        delete from green_user where old_id in
+        <foreach collection="array" item="oldId" open="(" separator="," close=")">
+            #{oldId}
+        </foreach>
+    </delete>
 
+
+    <select id="selectUserById" parameterType="Long" resultMap="GreenUserResult">
+        <include refid="selectUserVo"/>
+        where old_id = #{oldId}
+    </select>
+
+    <update id="updateUser" parameterType="GreenUser">
+        update green_user
+        <set>
+            <if test="oldId != null and oldId != 0">old_id=#{oldId},</if>
+            <if test="oldName != null and oldName != ''">old_name=#{oldName},</if>
+            <if test="oldDescribe != null and oldDescribe != ''">old_describe=#{oldDescribe},</if>
+            <if test="oldCard != null and oldCard != 0">old_card=#{oldCard},</if>
+            <if test="linkMan != null and linkMan != ''">linkman=#{linkMan},</if>
+            <if test="linkPhone != null and linkPhone != ''">link_phone=#{linkPhone},</if>
+            <if test="status != null and status != ''">status=#{status},</if>
+            <if test="remark != null and remark != ''">remark=#{remark},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where old_id = #{oldId}
+    </update>
 
 </mapper>
 

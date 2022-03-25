@@ -78,9 +78,21 @@
       <el-table-column label="当前挂号量" align="center" prop="deptNum" />
       <el-table-column label="负责人" align="center" prop="deptLeader" />
       <el-table-column label="电话" align="center" prop="deptPhone" />
-      <el-table-column label="状态" align="center" prop="status">
+      <!-- <el-table-column label="状态" align="center" prop="status">
+      <el-switch
+            v-model="this.postList.status"
+            active-color="#13ce66"
+            inactive-color="#ff4949">
+      </el-switch>
+      </el-table-column> -->
+      <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
+          <el-switch
+            v-model="scope.row.status"
+            active-value="0"
+            inactive-value="1"
+            @change="handleStatusChange(scope.row)"
+          ></el-switch>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
@@ -156,7 +168,7 @@
 </template>
 
 <script>
-import { listDept, getDept, delDept, addDept, updateDept } from "@/api/his/dept";
+import { listDept, getDept, delDept, addDept, updateDept, updateDeptSatus } from "@/api/his/dept";
 
 export default {
   name: "Post",
@@ -175,8 +187,10 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 岗位表格数据
+      // 表格数据
       postList: [],
+      //滑块按键值
+      statusLaght:true,
       // 弹出层标题
       title: "",
       //设置修改
@@ -208,11 +222,27 @@ export default {
     this.getList();
   },
   methods: {
+            // 角色状态修改
+    handleStatusChange(row) {
+      let text = row.status === "0" ? "启用" : "停用";
+      this.$modal.confirm('确认要"' + text + '""' + row.deptName + '"角色吗？').then(function() {
+        return updateDeptSatus(row.deptId, row.status);
+      }).then(() => {
+        this.$modal.msgSuccess(text + "成功");
+      }).catch(function() {
+        row.status = row.status === "0" ? "1" : "0";
+      });
+    },
+
+
+
     /** 查询岗位列表 */
     getList() {
       this.loading = true;
       listDept(this.queryParams).then(response => {
         this.postList = response.rows;
+        // this.postList.status = (!response.rows.status);
+        // this.statusLaght=response.rows.status===1?true:false;
         this.total = response.total;
         this.loading = false;
         this.reset;

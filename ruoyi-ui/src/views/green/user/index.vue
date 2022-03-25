@@ -1,16 +1,24 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="科室名称" prop="deptName">
+      <el-form-item label="患者名称" prop="userName">
         <el-input
-          v-model="queryParams.deptName"
-          placeholder="请输入科室名称"
+          v-model="queryParams.userName"
+          placeholder="请输入患者名称"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="身份证" prop="oldCard">
+        <el-input
+          v-model="queryParams.oldCard"
+          placeholder="请输入身份证"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="岗位状态" clearable>
+        <el-select v-model="queryParams.status" placeholder="用户状态" clearable>
           <el-option
             v-for="dict in dict.type.sys_normal_disable"
             :key="dict.value"
@@ -19,6 +27,14 @@
           />
         </el-select>
       </el-form-item>
+      <!-- <el-form-item label="身份证" prop="oldCard">
+        <el-input
+          v-model="queryParams.oldCard"
+          placeholder="请输入身份证"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item> -->
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -33,7 +49,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-hasPermi="['his:dept:add']"
+          v-hasPermi="['green:user:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -44,7 +60,7 @@
           size="mini"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['his:dept:edit']"
+          v-hasPermi="['green:user:edit']"
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -55,7 +71,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['his:dept:remove']"
+          v-hasPermi="['green:user:remove']"
         >删除</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -95,14 +111,14 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['his:dept:edit']"
+            v-hasPermi="['green:user:edit']"
           >修改</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['his:dept:remove']"
+            v-hasPermi="['green:user:remove']"
           >删除</el-button>
         </template>
       </el-table-column>
@@ -118,23 +134,23 @@
 
     <!-- 添加或修改岗位对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
-        <el-form-item label="科室名称" prop="deptName">
-          <el-input v-model="form.deptName" placeholder="请输入岗位名称" />
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
+        <el-form-item label="患者名称" prop="oldName">
+          <el-input v-model="form.oldName" placeholder="请输入患者名称" />
         </el-form-item>
-        <el-form-item label="科室编码" prop="deptCode">
-          <el-input v-model="form.deptCode" placeholder="请输入编码名称" />
+        <el-form-item label="身份证号" prop="oldCard">
+          <el-input v-model="form.oldCard" placeholder="请输入身份证号码" />
         </el-form-item>
-        <el-form-item label="负责人" prop="deptLeader">
-          <el-input v-model="form.deptLeader" placeholder="请输入负责人名称" />
+        <el-form-item label="紧急联系人" prop="linkMan">
+          <el-input v-model="form.linkMan" placeholder="请输入紧急联系人名称" />
         </el-form-item>
-        <el-form-item label="电话" prop="deptPhone">
-          <el-input v-model="form.deptPhone" placeholder="请输入手机号码" />
+        <el-form-item label="紧急联系人电话" prop="linkPhone">
+          <el-input v-model="form.linkPhone" placeholder="请输入手机号码" />
         </el-form-item>
-        <el-form-item label="推荐码" prop="postSort">
-          <el-input-number v-model="form.postSort" controls-position="right" :min="0" />
+        <el-form-item label="就医反馈" prop="oldDescribe">
+          <el-input v-model="form.oldDescribe" placeholder="请输入近期问诊信息" />
         </el-form-item>
-        <el-form-item label="科室状态" prop="status">
+        <el-form-item label="用户状态" prop="status">
           <el-radio-group v-model="form.status">
             <el-radio
               v-for="dict in dict.type.sys_normal_disable"
@@ -156,7 +172,7 @@
 </template>
 
 <script>
-import { listUser, getDept, delDept, addDept, updateDept } from "@/api/green/user";
+import { listUser, getUser, delUser, addUser, updateUser } from "@/api/green/user";
 
 export default {
   name: "Post",
@@ -175,7 +191,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 岗位表格数据
+      // 表格数据
       postList: [],
       // 弹出层标题
       title: "",
@@ -257,33 +273,31 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加科室";
+      this.title = "添加患者";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();
-      const deptId = row.deptId || this.ids
-      getDept(deptId).then(response => {
+      const oldId = row.oldId || this.ids
+      getUser(oldId).then(response => {
         // this.isEdit =1,
         this.form = response.data;
         this.open = true;
-        this.title = "修改科室";
+        this.title = "修改患者信息";
       });
     },
     /** 提交按钮 */
     submitForm: function() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          // console.log(this.form.depttId)
-          if (this.form.deptId != undefined) {
-            // if (this.isEdit ==1){
-            updateDept(this.form).then(response => {
+          if (this.form.oldId != undefined) {
+            updateUser(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
             });
           } else {
-            addDept(this.form).then(response => {
+            addUser(this.form).then(response => {
               this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
@@ -294,9 +308,9 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const deptIds = row.deptId || this.ids;
-      this.$modal.confirm('是否确认删除科室编号为"' + deptIds + '"的数据项？').then(function() {
-        return delDept(deptIds);
+      const oldIds = row.oldId || this.ids;
+      this.$modal.confirm('是否确认删除科室编号为"' + oldIds + '"的数据项？').then(function() {
+        return delUser(oldIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
@@ -304,7 +318,7 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      this.download('his/dept/export', {
+      this.download('green/user/export', {
         ...this.queryParams
       }, `post_${new Date().getTime()}.xlsx`)
     }
