@@ -35,6 +35,15 @@ export function updateDept(data) {
   })
 }
 
+// 根据Id修改状态
+export function updateDeptSatus(deptId,Status) {
+  return request({
+    url: '/his/dept/'+deptId+'/'+Status,
+    method: 'put',
+    // data: deptId,Status
+  })
+}
+
 // 删除岗位
 export function delDept(deptId) {
   return request({

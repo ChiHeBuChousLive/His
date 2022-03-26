@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="75px">
       <el-form-item label="诊所名称" prop="clinicName">
         <el-input
           v-model="queryParams.clinicName"
@@ -36,7 +36,7 @@
         </el-select>
       </el-form-item> -->
 
-      <el-form-item label="经纬度坐标" prop="coordinate">
+      <el-form-item label="经纬度坐标" prop="coordinate" label-width="100">
         <el-input
           v-model="queryParams.coordinate"
           placeholder="请输入经纬度坐标"
@@ -103,7 +103,7 @@
       <el-table-column label="诊所位置" align="center" prop="clinicLocation" />
       <el-table-column label="负责人" align="center" prop="clinicLeader" />
       <el-table-column label="手机号码" align="center" prop="clinicPhone" />
-      <el-table-column label="状态" align="center" prop="status" />
+      <!-- <el-table-column label="状态" align="center" prop="status" /> -->
       <!-- <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
@@ -114,13 +114,13 @@
           ></el-switch>
         </template>
       </el-table-column> -->
-      <!-- <el-table-column label="状态" align="center" prop="status">
+      <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
         </template>
-      </el-table-column> -->
-      <el-table-column label="备注" align="center" prop="remark" />
+      </el-table-column>
       <el-table-column label="经纬度坐标" align="center" prop="coordinate" />
+      <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
