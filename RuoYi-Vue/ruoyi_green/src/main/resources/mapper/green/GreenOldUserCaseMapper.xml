@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.green.mapper.GreenOldUserCaseMapper">
+
+    <resultMap type="GreenUserCase" id="GreenUserCaseResult">
+        <result property="oldId"     column="old_id"      />
+        <result property="caseId"     column="case_id"      />
+    </resultMap>
+
+    <delete id="deleteUserCaseByUserId" parameterType="Long">
+		delete from green_user_case where old_id=#{oldId}
+	</delete>
+
+<!--    <select id="selectUserIdByCaseId" resultType="Integer">-->
+<!--	    select count(1) from green_user_case where case_id=#{caseId}-->
+<!--	</select>-->
+
+<!--    <select id="selectAll  " parameterType="Long">-->
+<!--	    select case_id from green_user_case where old_id=#{oldId}-->
+<!--	</select>-->
+
+    <select id="selectCaseIdByUserId" parameterType="Long" resultType="Long">
+	    select case_id from green_user_case where old_id=#{oldId}
+	</select>
+
+    <select id="selectUserIdByCaseId" parameterType="Long" resultType="Long">
+	    select old_id from green_user_case where case_id=#{caseId}
+	</select>
+
+
+    <delete id="deleteUserCase" parameterType="Long">
+        delete from green_user_case where old_id in
+        <foreach collection="array" item="oldId" open="(" separator="," close=")">
+            #{oldId}
+        </foreach>
+    </delete>
+
+    <insert id="batchUserCase">
+        insert into green_user_case(old_id, case_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.oldId},#{item.caseId})
+        </foreach>
+    </insert>
+
+</mapper>

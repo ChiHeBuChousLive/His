@@ -103,22 +103,22 @@
       <el-table-column label="诊所位置" align="center" prop="clinicLocation" />
       <el-table-column label="负责人" align="center" prop="clinicLeader" />
       <el-table-column label="手机号码" align="center" prop="clinicPhone" />
-      <!-- <el-table-column label="状态" align="center" prop="status" /> -->
+      <el-table-column label="状态" align="center" prop="status" />
       <!-- <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="0"
+            active-value="0"s
             inactive-value="1"
             @change="handleStatusChange(scope.row)"
           ></el-switch>
         </template>
       </el-table-column> -->
-      <el-table-column label="状态" align="center" prop="status">
+      <!-- <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
         </template>
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column label="经纬度坐标" align="center" prop="coordinate" />
       <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">

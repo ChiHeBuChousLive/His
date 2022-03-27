@@ -212,6 +212,7 @@
         <module>ruoyi-his</module>
         <module>ruoyi_green</module>
         <module>ruoyi_condition</module>
+        <module>ruoyi_test</module>
     </modules>
     <packaging>pom</packaging>
 

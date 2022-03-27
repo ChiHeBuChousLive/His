@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.green.mapper.GreenFirstAidMapper">
+
+    <resultMap type="GreenFirstAid" id="GreenFirstAidResult">
+        <result property="aidId"    column="aid_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="aidName"    column="aid_name"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectGreenFirstAidVo">
+        select aid_id, parent_id, aid_name, create_by, create_time, update_by, update_time, remark from green_first_aid
+    </sql>
+
+    <select id="selectGreenFirstAidList" parameterType="GreenFirstAid" resultMap="GreenFirstAidResult">
+        <include refid="selectGreenFirstAidVo"/>
+        <where>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="aidName != null  and aidName != ''"> and aid_name like concat('%', #{aidName}, '%')</if>
+        </where>
+    </select>
+
+    <select id="selectGreenFirstAidByAidId" parameterType="Long" resultMap="GreenFirstAidResult">
+        <include refid="selectGreenFirstAidVo"/>
+        where aid_id = #{aidId}
+    </select>
+
+    <insert id="insertGreenFirstAid" parameterType="GreenFirstAid" useGeneratedKeys="true" keyProperty="aidId">
+        insert into green_first_aid
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">parent_id,</if>
+            <if test="aidName != null">aid_name,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">#{parentId},</if>
+            <if test="aidName != null">#{aidName},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updateGreenFirstAid" parameterType="GreenFirstAid">
+        update green_first_aid
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="aidName != null">aid_name = #{aidName},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where aid_id = #{aidId}
+    </update>
+
+    <delete id="deleteGreenFirstAidByAidId" parameterType="Long">
+        delete from green_first_aid where aid_id = #{aidId}
+    </delete>
+
+    <delete id="deleteGreenFirstAidByAidIds" parameterType="String">
+        delete from green_first_aid where aid_id in
+        <foreach item="aidId" collection="array" open="(" separator="," close=")">
+            #{aidId}
+        </foreach>
+    </delete>
+</mapper>

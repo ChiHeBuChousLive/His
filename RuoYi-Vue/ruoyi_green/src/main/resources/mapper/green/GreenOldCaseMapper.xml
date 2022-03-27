@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.green.mapper.GreenOldCaseMapper">
+    
+    <resultMap type="GreenOldCase" id="GreenOldCaseResult">
+        <result property="caseId"    column="case_id"    />
+        <result property="diabetes"    column="diabetes"    />
+        <result property="heartDisease"    column="heart_disease"    />
+        <result property="highBloodPressure"    column="high_blood_pressure"    />
+        <result property="geneticDisease"    column="genetic_disease"    />
+        <result property="cancer"    column="cancer"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectGreenOldCaseVo">
+        select case_id, diabetes, heart_disease, high_blood_pressure, genetic_disease, cancer, create_by, create_time, update_by, update_time, remark from green_old_case
+    </sql>
+
+    <select id="selectGreenOldCaseList" parameterType="GreenOldCase" resultMap="GreenOldCaseResult">
+        <include refid="selectGreenOldCaseVo"/>
+        <where>  
+            <if test="diabetes != null  and diabetes != ''"> and diabetes = #{diabetes}</if>
+            <if test="heartDisease != null  and heartDisease != ''"> and heart_disease = #{heartDisease}</if>
+            <if test="highBloodPressure != null  and highBloodPressure != ''"> and high_blood_pressure = #{highBloodPressure}</if>
+            <if test="geneticDisease != null  and geneticDisease != ''"> and genetic_disease = #{geneticDisease}</if>
+            <if test="cancer != null  and cancer != ''"> and cancer = #{cancer}</if>
+        </where>
+    </select>
+    
+    <select id="selectGreenOldCaseByCaseId" parameterType="Long" resultMap="GreenOldCaseResult">
+        <include refid="selectGreenOldCaseVo"/>
+        where case_id = #{caseId}
+    </select>
+        
+    <insert id="insertGreenOldCase" parameterType="GreenOldCase" useGeneratedKeys="true" keyProperty="caseId">
+        insert into green_old_case
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="diabetes != null">diabetes,</if>
+            <if test="heartDisease != null">heart_disease,</if>
+            <if test="highBloodPressure != null">high_blood_pressure,</if>
+            <if test="geneticDisease != null">genetic_disease,</if>
+            <if test="cancer != null">cancer,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="diabetes != null">#{diabetes},</if>
+            <if test="heartDisease != null">#{heartDisease},</if>
+            <if test="highBloodPressure != null">#{highBloodPressure},</if>
+            <if test="geneticDisease != null">#{geneticDisease},</if>
+            <if test="cancer != null">#{cancer},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGreenOldCase" parameterType="GreenOldCase">
+        update green_old_case
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="diabetes != null">diabetes = #{diabetes},</if>
+            <if test="heartDisease != null">heart_disease = #{heartDisease},</if>
+            <if test="highBloodPressure != null">high_blood_pressure = #{highBloodPressure},</if>
+            <if test="geneticDisease != null">genetic_disease = #{geneticDisease},</if>
+            <if test="cancer != null">cancer = #{cancer},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where case_id = #{caseId}
+    </update>
+
+    <delete id="deleteGreenOldCaseByCaseId" parameterType="Long">
+        delete from green_old_case where case_id = #{caseId}
+    </delete>
+
+    <delete id="deleteGreenOldCaseByCaseIds" parameterType="String">
+        delete from green_old_case where case_id in 
+        <foreach item="caseId" collection="array" open="(" separator="," close=")">
+            #{caseId}
+        </foreach>
+    </delete>
+</mapper>
