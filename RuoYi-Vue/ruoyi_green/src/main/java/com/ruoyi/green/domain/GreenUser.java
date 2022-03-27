@@ -3,6 +3,13 @@ package com.ruoyi.green.domain;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+
+/**
+ *绿色通道用户表
+ *
+ * @author zhezhi
+ * @date 2022-03-23
+ */
 public class GreenUser extends BaseEntity {
     private static final long serialVersionUID = 1L;
 

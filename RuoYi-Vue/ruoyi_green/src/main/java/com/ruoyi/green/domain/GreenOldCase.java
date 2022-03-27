@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 /**
  * 病例管理对象 green_old_case
  * 
- * @author kule
+ * @author zhezhi
  * @date 2022-03-26
  */
 public class GreenOldCase extends BaseEntity

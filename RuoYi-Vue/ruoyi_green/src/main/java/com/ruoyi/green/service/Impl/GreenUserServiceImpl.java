@@ -7,6 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+/**
+ * 绿色通道6用户Service业务层处理
+ *
+ * @author zhezhi
+ * @date 2022-03-23
+ */
 @Service
 public class GreenUserServiceImpl implements IGreenUserService {
 

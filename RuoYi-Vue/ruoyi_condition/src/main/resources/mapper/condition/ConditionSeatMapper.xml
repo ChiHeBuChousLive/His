@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.condition.mapper.ConditionSeatMapper">
+    
+    <resultMap type="ConditionSeat" id="ConditionSeatResult">
+        <result property="seatId"    column="seat_id"    />
+        <result property="clinicId"    column="clinic_Id"    />
+        <result property="equipmentId"    column="equipment_id"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectConditionSeatVo">
+        select seat_id, clinic_Id, equipment_id, create_by, create_time, update_by, update_time, remark from condition_seat
+    </sql>
+
+    <select id="selectConditionSeatList" parameterType="ConditionSeat" resultMap="ConditionSeatResult">
+        <include refid="selectConditionSeatVo"/>
+        <where>  
+            <if test="clinicId != null "> and clinic_Id = #{clinicId}</if>
+            <if test="equipmentId != null "> and equipment_id = #{equipmentId}</if>
+        </where>
+    </select>
+    
+    <select id="selectConditionSeatBySeatId" parameterType="Long" resultMap="ConditionSeatResult">
+        <include refid="selectConditionSeatVo"/>
+        where seat_id = #{seatId}
+    </select>
+        
+    <insert id="insertConditionSeat" parameterType="ConditionSeat" useGeneratedKeys="true" keyProperty="seatId">
+        insert into condition_seat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clinicId != null">clinic_Id,</if>
+            <if test="equipmentId != null">equipment_id,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="clinicId != null">#{clinicId},</if>
+            <if test="equipmentId != null">#{equipmentId},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateConditionSeat" parameterType="ConditionSeat">
+        update condition_seat
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clinicId != null">clinic_Id = #{clinicId},</if>
+            <if test="equipmentId != null">equipment_id = #{equipmentId},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where seat_id = #{seatId}
+    </update>
+
+    <delete id="deleteConditionSeatBySeatId" parameterType="Long">
+        delete from condition_seat where seat_id = #{seatId}
+    </delete>
+
+    <delete id="deleteConditionSeatBySeatIds" parameterType="String">
+        delete from condition_seat where seat_id in 
+        <foreach item="seatId" collection="array" open="(" separator="," close=")">
+            #{seatId}
+        </foreach>
+    </delete>
+</mapper>

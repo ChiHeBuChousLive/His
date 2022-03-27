@@ -11,7 +11,7 @@ import com.ruoyi.green.service.IGreenFirstAidService;
 /**
  * 紧急救治（关联病历与药物）Service业务层处理
  * 
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-27
  */
 @Service

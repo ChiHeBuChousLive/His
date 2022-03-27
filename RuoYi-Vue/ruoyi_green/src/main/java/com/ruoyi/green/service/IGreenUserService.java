@@ -4,6 +4,12 @@ import com.ruoyi.green.domain.GreenUser;
 
 import java.util.List;
 
+/**
+ * 绿色通道管理Service接口
+ *
+ * @author zhezhi
+ * @date 2022-03-23
+ */
 public interface IGreenUserService {
 
     List<GreenUser> selectUserList(GreenUser greenUser);

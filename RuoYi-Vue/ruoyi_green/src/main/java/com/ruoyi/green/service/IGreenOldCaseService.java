@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 病例管理Service接口
  * 
- * @author kule
+ * @author zhezhi
  * @date 2022-03-26
  */
 public interface IGreenOldCaseService 

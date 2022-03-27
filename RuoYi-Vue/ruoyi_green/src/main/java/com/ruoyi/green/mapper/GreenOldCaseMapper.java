@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 病例管理Mapper接口
  * 
- * @author kule
+ * @author zhezhi
  * @date 2022-03-26
  */
 public interface GreenOldCaseMapper 

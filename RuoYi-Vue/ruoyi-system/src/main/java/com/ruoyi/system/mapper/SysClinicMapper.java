@@ -6,7 +6,7 @@ import com.ruoyi.system.domain.SysClinic;
 /**
  * 门诊管理Mapper接口
  * 
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-25
  */
 public interface SysClinicMapper 

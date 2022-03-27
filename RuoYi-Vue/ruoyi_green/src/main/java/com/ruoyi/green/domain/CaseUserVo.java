@@ -1,10 +1,12 @@
 package com.ruoyi.green.domain;
 
-//import com.ruoyi.green.domain.GreenOldCase;
 
-//
-
-import com.ruoyi.green.domain.GreenOldCase;
+/**
+ * 病历填充用户用户姓名表（需要被弃用，此写法冗杂）
+ *
+ * @author zhezhi
+ * @date 2022-03-27
+ */
 
 public class CaseUserVo extends GreenOldCase {
 

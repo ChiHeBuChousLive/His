@@ -19,6 +19,12 @@ import java.util.List;
 
 import static com.ruoyi.common.utils.PageUtils.startPage;
 
+/**
+ * 绿色通道用户Controller
+ *
+ * @author zhezhi
+ * @date 2022-03-23
+ */
 @RestController
 @RequestMapping("/green/user")
 public class GreenUserController extends BaseController {

@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.TreeEntity;
 /**
  * 紧急救治（关联病历与药物）对象 green_first_aid
  *
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-27
  */
 public class GreenFirstAid extends TreeEntity

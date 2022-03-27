@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.condition.mapper.ConditionEquipmentMapper">
+    
+    <resultMap type="ConditionEquipment" id="ConditionEquipmentResult">
+        <result property="equipmentId"    column="equipment_id"    />
+        <result property="equipmentIp"    column="equipment_ip"    />
+        <result property="equipmentHeartRate"    column="equipment_heart_rate"    />
+        <result property="equipmentOx"    column="equipment_ox"    />
+        <result property="equipmentAlarm"    column="equipment_alarm"    />
+        <result property="equipmentTemperature"    column="equipment_temperature"    />
+        <result property="equipmentLocation"    column="equipment_location"    />
+        <result property="coordinate"    column="coordinate"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectConditionEquipmentVo">
+        select equipment_id, equipment_ip, equipment_heart_rate, equipment_ox, equipment_alarm, equipment_temperature,equipment_location, coordinate, create_by, create_time, update_by, update_time, remark from condition_equipment
+    </sql>
+
+    <select id="selectConditionEquipmentList" parameterType="ConditionEquipment" resultMap="ConditionEquipmentResult">
+        <include refid="selectConditionEquipmentVo"/>
+        <where>  
+            <if test="equipmentIp != null  and equipmentIp != ''"> and equipment_ip = #{equipmentIp}</if>
+            <if test="equipmentHeartRate != null  and equipmentHeartRate != ''"> and equipment_heart_rate = #{equipmentHeartRate}</if>
+            <if test="equipmentOx != null  and equipmentOx != ''"> and equipment_ox = #{equipmentOx}</if>
+            <if test="equipmentAlarm != null  and equipmentAlarm != ''"> and equipment_alarm = #{equipmentAlarm}</if>
+            <if test="equipmentTemperature != null  and equipmentTemperature != ''"> and equipment_temperature &gt;= #{equipmentTemperature}</if>
+            <if test="equipmentLocation != null  and equipmentLocation != ''"> and equipment_location = #{equipmentLocation}</if>
+            <if test="coordinate != null  and coordinate != ''"> and coordinate = #{coordinate}</if>
+        </where>
+    </select>
+    
+    <select id="selectConditionEquipmentByEquipmentId" parameterType="Long" resultMap="ConditionEquipmentResult">
+        <include refid="selectConditionEquipmentVo"/>
+        where equipment_id = #{equipmentId}
+    </select>
+        
+    <insert id="insertConditionEquipment" parameterType="ConditionEquipment">
+        insert into condition_equipment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="equipmentId != null">equipment_id,</if>
+            <if test="equipmentIp != null">equipment_ip,</if>
+            <if test="equipmentHeartRate != null">equipment_heart_rate,</if>
+            <if test="equipmentOx != null">equipment_ox,</if>
+            <if test="equipmentAlarm != null">equipment_alarm,</if>
+            <if test="equipmentTemperature != null">equipment_temperature,</if>
+            <if test="equipmentLocation != null">equipment_location,</if>
+            <if test="coordinate != null">coordinate,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="equipmentId != null">#{equipmentId},</if>
+            <if test="equipmentIp != null">#{equipmentIp},</if>
+            <if test="equipmentHeartRate != null">#{equipmentHeartRate},</if>
+            <if test="equipmentOx != null">#{equipmentOx},</if>
+            <if test="equipmentAlarm != null">#{equipmentAlarm},</if>
+            <if test="equipmentTemperature != null">#{equipmentTemperature},</if>
+            <if test="equipmentLocation != null">#{equipmentLocation},</if>
+            <if test="coordinate != null">#{coordinate},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateConditionEquipment" parameterType="ConditionEquipment">
+        update condition_equipment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="equipmentIp != null">equipment_ip = #{equipmentIp},</if>
+            <if test="equipmentHeartRate != null">equipment_heart_rate = #{equipmentHeartRate},</if>
+            <if test="equipmentOx != null">equipment_ox = #{equipmentOx},</if>
+            <if test="equipmentAlarm != null">equipment_alarm = #{equipmentAlarm},</if>
+            <if test="equipmentTemperature != null">equipment_temperature = #{equipmentTemperature},</if>
+            <if test="equipmentLocation != null">equipmentLocation = #{equipment_location},</if>
+            <if test="coordinate != null">coordinate = #{coordinate},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where equipment_id = #{equipmentId}
+    </update>
+
+    <delete id="deleteConditionEquipmentByEquipmentId" parameterType="Long">
+        delete from condition_equipment where equipment_id = #{equipmentId}
+    </delete>
+
+    <delete id="deleteConditionEquipmentByEquipmentIds" parameterType="String">
+        delete from condition_equipment where equipment_id in 
+        <foreach item="equipmentId" collection="array" open="(" separator="," close=")">
+            #{equipmentId}
+        </foreach>
+    </delete>
+</mapper>

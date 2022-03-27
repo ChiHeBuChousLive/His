@@ -6,7 +6,7 @@ import com.ruoyi.green.domain.GreenFirstAid;
 /**
  * 紧急救治（关联病历与药物）Service接口
  * 
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-27
  */
 public interface IGreenFirstAidService 

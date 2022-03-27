@@ -24,7 +24,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
 /**
  * 门诊管理Controller
  * 
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-25
  */
 @RestController

@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 /**
  * 门诊管理对象 sys_clinic
  * 
- * @author ruoyi
+ * @author zhezhi
  * @date 2022-03-25
  */
 public class SysClinic extends BaseEntity

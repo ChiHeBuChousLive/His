@@ -2,8 +2,14 @@ package com.ruoyi.green.mapper;
 
 import com.ruoyi.green.domain.GreenOldCase;
 import com.ruoyi.green.domain.GreenUserCase;
-
 import java.util.List;
+
+/**
+ * 绿色通道与病例管理Mapper接口
+ *
+ * @author zhezhi
+ * @date 2022-03-26
+ */
 
 public interface GreenOldUserCaseMapper {
 
