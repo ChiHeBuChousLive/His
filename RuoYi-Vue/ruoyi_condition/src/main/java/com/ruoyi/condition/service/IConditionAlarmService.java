@@ -31,7 +31,7 @@ public interface IConditionAlarmService
 
     /**
      * 新增设备警报管理
-     * 
+     * 在设备发生报警的时候调用，传入报警信息，与老人信息
      * @param conditionAlarm 设备警报管理
      * @return 结果
      */
@@ -60,4 +60,8 @@ public interface IConditionAlarmService
      * @return 结果
      */
     public int deleteConditionAlarmByAlarmId(Long alarmId);
+
+
+//    public int insertInfoConditionAlarmBy(ConditionAlarm conditionAlarm);
+
 }

@@ -46,6 +46,11 @@
           @click="handleUpdate"
           v-hasPermi="['his:dept:edit']"
         >修改</el-button>
+         <el-button
+            size="mini"
+            type="text"
+            @click="handSentSms"
+          >测试短信发送</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -168,7 +173,7 @@
 </template>
 
 <script>
-import { listDept, getDept, delDept, addDept, updateDept, updateDeptSatus } from "@/api/his/dept";
+import { listDept, getDept, delDept, addDept, updateDept, updateDeptSatus,sendSms,sendSmsTest } from "@/api/his/dept";
 
 export default {
   name: "Post",
@@ -205,6 +210,15 @@ export default {
         postName: undefined,
         status: undefined
       },
+
+
+      SmsVo: {
+        leaderName: 123,
+        locationName: "枣庄",
+        phoneNumber: 17861918900
+      },
+
+
       // 表单参数
       form: {},
       // 表单校验
@@ -289,6 +303,17 @@ export default {
       this.open = true;
       this.title = "添加科室";
     },
+
+
+    handSentSms(){
+      const SmsVos=this.SmsVo
+      sendSmsTest().then(response =>{})
+       sendSms(SmsVos).then(response =>{
+         console.log("end")
+       })
+    },
+
+
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();

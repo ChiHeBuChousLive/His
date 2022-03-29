@@ -9,6 +9,27 @@ export function listDept(query) {
   })
 }
 
+export function sendSmsTest(query) {
+  return request({
+    url: '/edumsm/msm',
+    method: 'get',
+    params: query
+  })
+}
+
+
+
+
+// 测试短信发送业务列表
+export function sendSms(query) {
+  return request({
+    url: '/edumsm/msm',
+    method: 'post',
+    params: query
+  })
+}
+
+
 // 查询岗位详细
 export function getDept(deptId) {
   return request({
@@ -50,4 +71,7 @@ export function delDept(deptId) {
     url: '/his/dept/' + deptId,
     method: 'delete'
   })
+
+
+  
 }

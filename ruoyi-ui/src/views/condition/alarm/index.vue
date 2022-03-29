@@ -146,7 +146,8 @@ export default {
       form: {},
       // 表单校验
       rules: {
-      }
+      },
+
     };
   },
   created() {
@@ -215,6 +216,8 @@ export default {
         this.title = "修改设备警报管理";
       });
     },
+
+
     /** 提交按钮 */
     submitForm() {
       this.$refs["form"].validate(valid => {

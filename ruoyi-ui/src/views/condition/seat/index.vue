@@ -1,6 +1,13 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form
+      :model="queryParams"
+      ref="queryForm"
+      size="small"
+      :inline="true"
+      v-show="showSearch"
+      label-width="68px"
+    >
       <el-form-item label="诊所外键Id" prop="clinicId">
         <el-input
           v-model="queryParams.clinicId"
@@ -18,8 +25,16 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-search"
+          size="mini"
+          @click="handleQuery"
+          >搜索</el-button
+        >
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery"
+          >重置</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -32,7 +47,8 @@
           size="mini"
           @click="handleAdd"
           v-hasPermi="['condition:seat:add']"
-        >新增</el-button>
+          >新增</el-button
+        >
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -43,7 +59,8 @@
           :disabled="single"
           @click="handleUpdate"
           v-hasPermi="['condition:seat:edit']"
-        >修改</el-button>
+          >修改</el-button
+        >
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -54,7 +71,8 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['condition:seat:remove']"
-        >删除</el-button>
+          >删除</el-button
+        >
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -64,18 +82,37 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['condition:seat:export']"
-        >导出</el-button>
+          >导出</el-button
+        >
       </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
+      <right-toolbar
+        :showSearch.sync="showSearch"
+        @queryTable="getList"
+      ></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="seatList" @selection-change="handleSelectionChange">
+    <el-table
+      v-loading="loading"
+      :data="seatList"
+      @selection-change="handleSelectionChange"
+    >
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="位置信息Id" align="center" prop="seatId" />
-      <el-table-column label="诊所外键Id" align="center" prop="clinicId" />
-      <el-table-column label="设备外键Id" align="center" prop="equipmentId" />
+      <el-table-column label="位置信息管理Id" align="center" prop="seatId" />
+      <el-table-column label="名称信息" align="center" prop="frontName">
+        <template slot-scope="scope">
+          <i
+            :class="seatList.clinicId < 0 ? 'el-icon-bottom' : 'el-icon-top'"
+          ></i>
+          {{ scope.row.frontName }}
+        </template>
+      </el-table-column>
+      <el-table-column label="位置信息" align="center" prop="frontLocation" />
       <el-table-column label="备注" align="center" prop="remark" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column
+        label="操作"
+        align="center"
+        class-name="small-padding fixed-width"
+      >
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -83,20 +120,22 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['condition:seat:edit']"
-          >修改</el-button>
+            >修改</el-button
+          >
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['condition:seat:remove']"
-          >删除</el-button>
+            >删除</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
-      v-show="total>0"
+      v-show="total > 0"
       :total="total"
       :page.sync="queryParams.pageNum"
       :limit.sync="queryParams.pageSize"
@@ -105,11 +144,31 @@
 
     <!-- 添加或修改位置信息管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="诊所外键Id" prop="clinicId">
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
+        <el-form-item>
+          <el-tooltip :content="'Switch : ' + preseteId" placement="top">
+            <el-switch
+              v-model="preseteId"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+            >
+            </el-switch>
+          </el-tooltip>
+                      <span class="presete-class">&nbsp;&nbsp;当前输入的是{{ presete }}ID</span>
+        </el-form-item>
+
+        <el-form-item
+          label="诊所外键Id"
+          prop="clinicId"
+          v-show="this.preseteId === false"
+        >
           <el-input v-model="form.clinicId" placeholder="请输入诊所外键Id" />
         </el-form-item>
-        <el-form-item label="设备外键Id" prop="equipmentId">
+        <el-form-item
+          label="设备外键Id"
+          prop="equipmentId"
+          v-show="this.preseteId === true"
+        >
           <el-input v-model="form.equipmentId" placeholder="请输入设备外键Id" />
         </el-form-item>
         <el-form-item label="备注" prop="remark">
@@ -125,7 +184,14 @@
 </template>
 
 <script>
-import { listSeat, getSeat, delSeat, addSeat, updateSeat } from "@/api/condition/seat";
+import {
+  listSeat,
+  getSeat,
+  delSeat,
+  addSeat,
+  updateSeat,
+} from "@/api/condition/seat";
+import { Switch }  from 'element-ui'
 
 export default {
   name: "Seat",
@@ -142,9 +208,12 @@ export default {
       // 显示搜索条件
       showSearch: true,
       // 总条数
-      total: 0,
+      total: 1,
       // 位置信息管理表格数据
       seatList: [],
+      //当前选择输入Id是什么的，false诊所，ture设备
+      preseteId: false,
+      presete: "诊所",
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -155,12 +224,12 @@ export default {
         pageSize: 10,
         clinicId: null,
         equipmentId: null,
+        clinicName: null,
       },
       // 表单参数
       form: {},
       // 表单校验
-      rules: {
-      }
+      rules: {},
     };
   },
   created() {
@@ -170,7 +239,7 @@ export default {
     /** 查询位置信息管理列表 */
     getList() {
       this.loading = true;
-      listSeat(this.queryParams).then(response => {
+      listSeat(this.queryParams).then((response) => {
         this.seatList = response.rows;
         this.total = response.total;
         this.loading = false;
@@ -191,7 +260,7 @@ export default {
         createTime: null,
         updateBy: null,
         updateTime: null,
-        remark: null
+        remark: null,
       };
       this.resetForm("form");
     },
@@ -207,9 +276,9 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.seatId)
-      this.single = selection.length!==1
-      this.multiple = !selection.length
+      this.ids = selection.map((item) => item.seatId);
+      this.single = selection.length !== 1;
+      this.multiple = !selection.length;
     },
     /** 新增按钮操作 */
     handleAdd() {
@@ -220,8 +289,8 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();
-      const seatId = row.seatId || this.ids
-      getSeat(seatId).then(response => {
+      const seatId = row.seatId || this.ids;
+      getSeat(seatId).then((response) => {
         this.form = response.data;
         this.open = true;
         this.title = "修改位置信息管理";
@@ -229,16 +298,16 @@ export default {
     },
     /** 提交按钮 */
     submitForm() {
-      this.$refs["form"].validate(valid => {
+      this.$refs["form"].validate((valid) => {
         if (valid) {
           if (this.form.seatId != null) {
-            updateSeat(this.form).then(response => {
+            updateSeat(this.form).then((response) => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
               this.getList();
             });
           } else {
-            addSeat(this.form).then(response => {
+            addSeat(this.form).then((response) => {
               this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
@@ -250,19 +319,52 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const seatIds = row.seatId || this.ids;
-      this.$modal.confirm('是否确认删除位置信息管理编号为"' + seatIds + '"的数据项？').then(function() {
-        return delSeat(seatIds);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {});
+      this.$modal
+        .confirm('是否确认删除位置信息管理编号为"' + seatIds + '"的数据项？')
+        .then(function () {
+          return delSeat(seatIds);
+        })
+        .then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+        })
+        .catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
-      this.download('condition/seat/export', {
-        ...this.queryParams
-      }, `seat_${new Date().getTime()}.xlsx`)
-    }
-  }
+      this.download(
+        "condition/seat/export",
+        {
+          ...this.queryParams,
+        },
+        `seat_${new Date().getTime()}.xlsx`
+      );
+    },
+  },
+  watch: {
+    preseteId: {
+      handler() {
+        this.presete = this.preseteId === false ? "诊所" : "设备";
+      },
+    },
+  },
+  // computed:{
+  //   classSeatList(frontName) {
+  //     if(frontName.indexOf(设备)){
+  //      return { color: "red" };
+  //     }else{
+  //       return { color: "green" };
+  //     }
+  //   }
+  // }
 };
 </script>
+
+<style scoped>
+  .presete-class {
+      font-size: 20px;
+      font-weight: 700;
+      color: rgb(57, 18, 228);
+      
+  }
+</style>

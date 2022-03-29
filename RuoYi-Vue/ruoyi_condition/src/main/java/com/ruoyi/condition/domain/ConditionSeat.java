@@ -26,7 +26,73 @@ public class ConditionSeat extends BaseEntity
     @Excel(name = "设备外键Id")
     private Long equipmentId;
 
-    public void setSeatId(Long seatId) 
+    @Excel(name = "前端显示名称")
+    private String frontName;
+
+    @Excel(name = "前端显示地理位置")
+    private String frontLocation;
+
+    public String getFrontName() {
+        return frontName;
+    }
+
+    public void setFrontName(String frontName) {
+        this.frontName = frontName;
+    }
+
+    public String getFrontLocation() {
+        return frontLocation;
+    }
+
+    public void setFrontLocation(String frontLocation) {
+        this.frontLocation = frontLocation;
+    }
+
+    /**下面四个属性弃用，走不通*/
+    private String equipmentName;
+
+    private String equipmentLocation;
+
+    private String clinicName;
+
+    private String clinicLocation;
+
+
+
+
+    public String getEquipmentName() {
+        return equipmentName;
+    }
+
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName = equipmentName;
+    }
+
+    public String getEquipmentLocation() {
+        return equipmentLocation;
+    }
+
+    public void setEquipmentLocation(String equipmentLocation) {
+        this.equipmentLocation = equipmentLocation;
+    }
+
+    public String getClinicName() {
+        return clinicName;
+    }
+
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName;
+    }
+
+    public String getClinicLocation() {
+        return clinicLocation;
+    }
+
+    public void setClinicLocation(String clinicLocation) {
+        this.clinicLocation = clinicLocation;
+    }
+
+    public void setSeatId(Long seatId)
     {
         this.seatId = seatId;
     }

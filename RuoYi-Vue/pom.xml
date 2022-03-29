@@ -213,6 +213,8 @@
         <module>ruoyi_green</module>
         <module>ruoyi_condition</module>
         <module>ruoyi_test</module>
+        <module>ruoyi_oss</module>
+        <module>ruoyi-sms</module>
     </modules>
     <packaging>pom</packaging>
 
