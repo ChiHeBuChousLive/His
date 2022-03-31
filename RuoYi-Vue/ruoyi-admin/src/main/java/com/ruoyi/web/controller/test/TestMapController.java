@@ -8,9 +8,7 @@ import com.ruoyi.test.domain.OldAndClinic;
 import com.ruoyi.test.service.ITestMapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,17 +20,16 @@ public class TestMapController extends BaseController {
     private ITestMapService testMapService;
     @PreAuthorize("@ss.hasPermi('test:front_map:list')")
     @GetMapping("/getClinicList")
-    public TableDataInfo getClinicList(){
-        List<SysClinic> list=testMapService.getClinicList();
+    public TableDataInfo getClinicList(@RequestParam(value = "oldId",required=false,defaultValue ="1") long oldId){
+        List<SysClinic> list=testMapService.getClinicList(oldId);
         return getDataTable(list);
     }
     //拿到最近的诊所对象，并且返回设备对象
     @PreAuthorize("@ss.hasPermi('test:front_map:list')")
     @GetMapping("/getOldAndClinic")
-    public AjaxResult getOldAndClinic(){
-        OldAndClinic oldAndClinic=testMapService.getOldAndClinic();
+    public AjaxResult getOldAndClinic( @RequestParam(value = "oldId",required=false,defaultValue ="1") long oldId){
+        OldAndClinic oldAndClinic=testMapService.getOldAndClinic(oldId);
         return AjaxResult.success(oldAndClinic);
     }
-
 
 }
