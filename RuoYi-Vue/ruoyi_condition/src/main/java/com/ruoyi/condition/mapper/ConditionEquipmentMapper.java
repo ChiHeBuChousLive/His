@@ -21,6 +21,13 @@ public interface ConditionEquipmentMapper
      */
     public ConditionEquipment selectConditionEquipmentByEquipmentId(Long equipmentId);
 
+
+    /***
+     * 查询最新增加的一个设备
+     * @return
+     */
+    public ConditionEquipment selectLastEquipment();
+
     /**
      * 查询设备列表
      * 

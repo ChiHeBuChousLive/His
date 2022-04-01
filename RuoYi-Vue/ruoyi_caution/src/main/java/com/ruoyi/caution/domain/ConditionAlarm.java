@@ -1,4 +1,4 @@
-package com.ruoyi.condition.domain;
+package com.ruoyi.caution.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 设备警报管理对象 condition_alarm
  * 
  * @author zhezhi
- * @date 2022-03-27
+ * @date 2022-04-01
  */
 public class ConditionAlarm extends BaseEntity
 {

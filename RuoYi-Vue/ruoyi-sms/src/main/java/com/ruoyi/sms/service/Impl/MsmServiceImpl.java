@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MsmServiceImpl implements MsmService {
     @Override
-    public boolean send(String name, String locationName,String phone) {
+    public boolean send(String name,String caseTing, String locationName,String phone) {
         try{
             // 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey,此处还需注意密钥对的保密
             // 密钥可前往https://console.cloud.tencent.com/cam/capi网站进行获取
@@ -37,9 +37,9 @@ public class MsmServiceImpl implements MsmService {
 
             req.setSmsSdkAppId("1400655237");
             req.setSignName("枣院AI院");
-            req.setTemplateId("1346614");
+            req.setTemplateId("1352200");
 
-            String[] templateParamSet1 = {name,locationName};
+            String[] templateParamSet1 = {name,caseTing,locationName};
             req.setTemplateParamSet(templateParamSet1);
 
             // 返回的resp是一个SendSmsResponse的实例，与请求对象对应

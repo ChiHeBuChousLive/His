@@ -37,6 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectGreenOldCaseVo"/>
         where case_id = #{caseId}
     </select>
+    
+    
+    <select id="selectLast"  resultMap="GreenOldCaseResult">
+        select * from   green_old_case order by case_id DESC limit 1
+    </select>
         
     <insert id="insertGreenOldCase" parameterType="GreenOldCase" useGeneratedKeys="true" keyProperty="caseId">
         insert into green_old_case

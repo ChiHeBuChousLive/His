@@ -9,6 +9,7 @@ import com.ruoyi.test.domain.OldAndClinic;
 import com.ruoyi.test.service.ITestMapService;
 import javafx.beans.binding.LongExpression;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,8 +20,11 @@ import static java.lang.Math.sqrt;
 @Service
 public class TestMapServiceImpl implements ITestMapService {
     @Autowired
+    @Lazy
     private SysClinicMapper sysClinicMapper;
+
     @Autowired
+    @Lazy
     private ConditionEquipmentMapper conditionEquipmentMapper;
 
     //拿到附近所有的诊所信息

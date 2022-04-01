@@ -21,6 +21,16 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-system</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi_test</artifactId>
+            <version>3.8.1</version>
+            <scope>compile</scope>
+        </dependency>
 
 
     </dependencies>

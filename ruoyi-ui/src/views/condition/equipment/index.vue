@@ -41,14 +41,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <!-- <el-form-item label="经纬度坐标" prop="coordinate">
-        <el-input
-          v-model="queryParams.coordinate"
-          placeholder="请输入经纬度坐标"
-          clearable
-          @keyup.enter.native="handleQuery"
-        /> -->
-      <!-- </el-form-item> -->
       <el-form-item >
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -103,7 +95,8 @@
 
     <el-table v-loading="loading" :data="equipmentList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="设备Id" align="center" prop="equipmentId" />
+      <!-- <el-table-column label="设备Id" align="center" prop="equipmentId" /> -->
+      <el-table-column label="用户ID" align="center" prop="OldId" />
       <el-table-column label="设备Ip" align="center" prop="equipmentIp" />
       <el-table-column label="心率" align="center" prop="equipmentHeartRate" />
       <el-table-column label="血氧饱和度" align="center" prop="equipmentOx" />

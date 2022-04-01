@@ -1,6 +1,6 @@
-package com.ruoyi.condition.mapper;
+package com.ruoyi.caution.mapper;
 
-import com.ruoyi.condition.domain.ConditionAlarm;
+import com.ruoyi.caution.domain.ConditionAlarm;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 设备警报管理Mapper接口
  * 
  * @author zhezhi
- * @date 2022-03-27
+ * @date 2022-04-01
  */
 public interface ConditionAlarmMapper 
 {

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="128px">
+    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="是否通知诊所" prop="isNotice">
         <el-input
           v-model="queryParams.isNotice"
@@ -23,7 +23,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-hasPermi="['condition:alarm:add']"
+          v-hasPermi="['system:alarm:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -34,7 +34,7 @@
           size="mini"
           :disabled="single"
           @click="handleUpdate"
-          v-hasPermi="['condition:alarm:edit']"
+          v-hasPermi="['system:alarm:edit']"
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -45,7 +45,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['condition:alarm:remove']"
+          v-hasPermi="['system:alarm:remove']"
         >删除</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -55,7 +55,7 @@
           icon="el-icon-download"
           size="mini"
           @click="handleExport"
-          v-hasPermi="['condition:alarm:export']"
+          v-hasPermi="['system:alarm:export']"
         >导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -75,14 +75,14 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['condition:alarm:edit']"
+            v-hasPermi="['system:alarm:edit']"
           >修改</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['condition:alarm:remove']"
+            v-hasPermi="['system:alarm:remove']"
           >删除</el-button>
         </template>
       </el-table-column>
@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { listAlarm, getAlarm, delAlarm, addAlarm, updateAlarm } from "@/api/condition/alarm";
+import { listAlarm, getAlarm, delAlarm, addAlarm, updateAlarm } from "@/api/caution/alarm";
 
 export default {
   name: "Alarm",
@@ -146,8 +146,7 @@ export default {
       form: {},
       // 表单校验
       rules: {
-      },
-
+      }
     };
   },
   created() {
@@ -216,8 +215,6 @@ export default {
         this.title = "修改设备警报管理";
       });
     },
-
-
     /** 提交按钮 */
     submitForm() {
       this.$refs["form"].validate(valid => {

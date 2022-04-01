@@ -13,7 +13,7 @@
       <el-col :sm="24" :lg="12" style="padding-left: 20px">
         <h2>分布式乡村医疗云管理后台</h2>
         <p>
-          为多一丝可能而全力以赴
+          为多一丝挽救生命的可能而拼尽全力
         </p>
         <p>
           <b>当前版本:</b> <span>v{{ version }}</span>

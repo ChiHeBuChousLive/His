@@ -8,6 +8,17 @@ public class SmsVo extends BaseEntity {
 
     private String locationName;
 
+    private String caseTing;
+
+    public String getCaseTing() {
+        return caseTing;
+    }
+
+
+    public void setCaseTing(String caseTing) {
+        this.caseTing = caseTing;
+    }
+
     private String leaderName;
 
     @Override

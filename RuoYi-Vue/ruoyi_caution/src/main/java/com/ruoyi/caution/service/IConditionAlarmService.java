@@ -1,15 +1,15 @@
-package com.ruoyi.condition.service;
+package com.ruoyi.caution.service;
 
-import com.ruoyi.condition.domain.ConditionAlarm;
+import com.ruoyi.caution.domain.ConditionAlarm;
+import com.ruoyi.condition.domain.ConditionEquipment;
 
 import java.util.List;
-
 
 /**
  * 设备警报管理Service接口
  * 
  * @author zhezhi
- * @date 2022-03-27
+ * @date 2022-04-01
  */
 public interface IConditionAlarmService 
 {
@@ -31,7 +31,7 @@ public interface IConditionAlarmService
 
     /**
      * 新增设备警报管理
-     * 在设备发生报警的时候调用，传入报警信息，与老人信息
+     * 
      * @param conditionAlarm 设备警报管理
      * @return 结果
      */
@@ -62,6 +62,10 @@ public interface IConditionAlarmService
     public int deleteConditionAlarmByAlarmId(Long alarmId);
 
 
-//    public int insertInfoConditionAlarmBy(ConditionAlarm conditionAlarm);
-
+    /**
+     * 对设备暴露的请求接口：完成数据异常时短信发送，设备状态异常进行请求
+     * @param conditionEquipment
+     * @return
+     */
+    public int deviceRequestInterface(ConditionEquipment conditionEquipment);
 }

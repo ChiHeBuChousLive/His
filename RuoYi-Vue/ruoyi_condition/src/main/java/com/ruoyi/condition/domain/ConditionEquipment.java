@@ -46,6 +46,18 @@ public class ConditionEquipment extends BaseEntity
     @Excel(name = "位置")
     private String equipmentLocation;
 
+    /**  用户Id  */
+    @Excel(name = "用户Id")
+    private Long oldId;
+
+    public Long getOldId() {
+        return oldId;
+    }
+
+    public void setOldId(Long oldId) {
+        this.oldId = oldId;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }

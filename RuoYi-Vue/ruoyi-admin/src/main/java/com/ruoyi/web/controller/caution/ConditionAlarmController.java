@@ -1,11 +1,10 @@
-package com.ruoyi.web.controller.condition;
+package com.ruoyi.web.controller.caution;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ruoyi.common.utils.poi.ExcelUtil;
-import com.ruoyi.condition.domain.ConditionAlarm;
-import com.ruoyi.condition.service.IConditionAlarmService;
+import com.ruoyi.caution.domain.ConditionAlarm;
+import com.ruoyi.caution.service.IConditionAlarmService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,16 +19,17 @@ import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
  * 设备警报管理Controller
  * 
  * @author zhezhi
- * @date 2022-03-27
+ * @date 2022-04-01
  */
 @RestController
-@RequestMapping("/condition/alarm")
+@RequestMapping("/caution/alarm")
 public class ConditionAlarmController extends BaseController
 {
     @Autowired
@@ -38,7 +38,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 查询设备警报管理列表
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:list')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:list')")
     @GetMapping("/list")
     public TableDataInfo list(ConditionAlarm conditionAlarm)
     {
@@ -50,7 +50,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 导出设备警报管理列表
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:export')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:export')")
     @Log(title = "设备警报管理", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, ConditionAlarm conditionAlarm)
@@ -63,7 +63,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 获取设备警报管理详细信息
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:query')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:query')")
     @GetMapping(value = "/{alarmId}")
     public AjaxResult getInfo(@PathVariable("alarmId") Long alarmId)
     {
@@ -73,7 +73,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 新增设备警报管理
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:add')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:add')")
     @Log(title = "设备警报管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody ConditionAlarm conditionAlarm)
@@ -84,7 +84,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 修改设备警报管理
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:edit')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:edit')")
     @Log(title = "设备警报管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody ConditionAlarm conditionAlarm)
@@ -95,7 +95,7 @@ public class ConditionAlarmController extends BaseController
     /**
      * 删除设备警报管理
      */
-    @PreAuthorize("@ss.hasPermi('condition:alarm:remove')")
+    @PreAuthorize("@ss.hasPermi('caution:alarm:remove')")
     @Log(title = "设备警报管理", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{alarmIds}")
     public AjaxResult remove(@PathVariable Long[] alarmIds)

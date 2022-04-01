@@ -9,36 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ruoyi_condition</artifactId>
-    <description>
-        状态监控系统模块：这里完成设备检测，设备报警管理，位置信息管理
-    </description>
-    <dependencies>
+    <artifactId>ruoyi_caution</artifactId>
 
-        <!-- 通用工具-->
+    <dependencies>
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-system</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-sms</artifactId>
+            <artifactId>ruoyi_condition</artifactId>
             <version>3.8.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi_green</artifactId>
+            <artifactId>ruoyi_test</artifactId>
             <version>3.8.1</version>
             <scope>compile</scope>
         </dependency>
-
-
-
     </dependencies>
-
 </project>

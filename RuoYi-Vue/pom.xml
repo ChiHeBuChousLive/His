@@ -215,6 +215,7 @@
         <module>ruoyi_test</module>
         <module>ruoyi_oss</module>
         <module>ruoyi-sms</module>
+        <module>ruoyi_caution</module>
     </modules>
     <packaging>pom</packaging>
 

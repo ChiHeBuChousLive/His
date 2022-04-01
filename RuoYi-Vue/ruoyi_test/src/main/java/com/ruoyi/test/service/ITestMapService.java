@@ -12,6 +12,7 @@ public interface ITestMapService {
     public List<SysClinic> getClinicList(long oldId);
     //拿到最近的诊所和老人
     public OldAndClinic getOldAndClinic(long oldId);
+
     //返回最近的诊所
     public SysClinic getCloseClinic(long oldId);
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.green.mapper.GreenUserEquipmentMapper">
+    
+    <resultMap type="GreenUserEquipment" id="GreenUserEquipmentResult">
+        <result property="oldId"    column="old_id"    />
+        <result property="equipmentId"    column="equipment_id"    />
+        <result property="userEquipmentRelation"    column="user_equipment_relation"    />
+    </resultMap>
+
+    <sql id="selectGreenUserEquipmentVo">
+        select old_id, equipment_id, user_equipment_relation from green_user_equipment
+    </sql>
+
+    <select id="selectGreenUserEquipmentList" parameterType="GreenUserEquipment" resultMap="GreenUserEquipmentResult">
+        <include refid="selectGreenUserEquipmentVo"/>
+        <where>  
+            <if test="oldId != null "> and old_id = #{oldId}</if>
+            <if test="equipmentId != null "> and equipment_id = #{equipmentId}</if>
+        </where>
+    </select>
+
+    <select id="selectGreenUserByEquipmentId" parameterType="Long" resultMap="GreenUserEquipmentResult">
+        <include refid="selectGreenUserEquipmentVo"/>
+        where equipment_id = #{equipmentId}
+    </select>
+
+<!--    <select id="selectEquipmentByGreenUserId" parameterType="Long" resultMap="GreenUserEquipmentResult">-->
+<!--        <include refid="selectGreenUserEquipmentVo"/>-->
+<!--        where old_id = #{oldId}-->
+<!--    </select>-->
+
+
+    <select id="selectGreenUserEquipmentByUserEquipmentRelation" parameterType="Long" resultMap="GreenUserEquipmentResult">
+        <include refid="selectGreenUserEquipmentVo"/>
+        where user_equipment_relation = #{userEquipmentRelation}
+    </select>
+        
+    <insert id="insertGreenUserEquipment" parameterType="GreenUserEquipment">
+        insert into green_user_equipment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="oldId != null">old_id,</if>
+            <if test="equipmentId != null">equipment_id,</if>
+            <if test="userEquipmentRelation != null">user_equipment_relation,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="oldId != null">#{oldId},</if>
+            <if test="equipmentId != null">#{equipmentId},</if>
+            <if test="userEquipmentRelation != null">#{userEquipmentRelation},</if>
+         </trim>
+    </insert>
+
+    <update id="updateGreenUserEquipment" parameterType="GreenUserEquipment">
+        update green_user_equipment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="oldId != null">old_id = #{oldId},</if>
+            <if test="equipmentId != null">equipment_id = #{equipmentId},</if>
+        </trim>
+        where user_equipment_relation = #{userEquipmentRelation}
+    </update>
+
+    <delete id="deleteGreenUserEquipmentByUserEquipmentRelation" parameterType="Long">
+        delete from green_user_equipment where user_equipment_relation = #{userEquipmentRelation}
+    </delete>
+
+    <delete id="deleteGreenUserEquipmentByUserEquipmentRelations" parameterType="String">
+        delete from green_user_equipment where user_equipment_relation in 
+        <foreach item="userEquipmentRelation" collection="array" open="(" separator="," close=")">
+            #{userEquipmentRelation}
+        </foreach>
+    </delete>
+</mapper>

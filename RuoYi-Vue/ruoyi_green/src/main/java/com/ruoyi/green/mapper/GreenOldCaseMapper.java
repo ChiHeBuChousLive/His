@@ -30,6 +30,12 @@ public interface GreenOldCaseMapper
     public List<GreenOldCase> selectGreenOldCaseList(GreenOldCase greenOldCase);
 
     /**
+     * 查询最新添加的病例对象
+     * @return
+     */
+    public GreenOldCase selectLast();
+
+    /**
      * 新增病例管理
      * 
      * @param greenOldCase 病例管理

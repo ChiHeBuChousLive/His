@@ -36,7 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="coordinate != null  and coordinate != ''"> and coordinate = #{coordinate}</if>
         </where>
     </select>
-    
+
+    <select id="selectLastEquipment" resultMap="ConditionEquipmentResult">
+        select * from   condition_equipment order by equipment_id DESC limit 1
+    </select>
+
+
     <select id="selectConditionEquipmentByEquipmentId" parameterType="Long" resultMap="ConditionEquipmentResult">
         <include refid="selectConditionEquipmentVo"/>
         where equipment_id = #{equipmentId}

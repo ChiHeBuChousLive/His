@@ -20,7 +20,7 @@
       <el-form-item label="糖尿病" prop="diabetes">
         <el-select v-model="queryParams.diabetes" placeholder="请选择是否患有糖尿病" clearable>
           <el-option
-            v-for="dict in dict.type.sys_normal_disable"
+            v-for="dict in dict.type.have_medical_condition"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -84,8 +84,28 @@
       <el-table-column label="病例Id" align="center" prop="caseId" />
       <el-table-column label="用户姓名" align="center" prop="oldName" />
       <el-table-column label="糖尿病" align="center" prop="diabetes">
+      <template slot-scope="scope">
+          <dict-tag :options="dict.type.have_medical_condition" :value="scope.row.diabetes"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="心脏病" align="center" prop="heartDisease">
+            <template slot-scope="scope">
+          <dict-tag :options="dict.type.have_medical_condition" :value="scope.row.heartDisease"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="高血压" align="center" prop="highBloodPressure">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
+          <dict-tag :options="dict.type.have_medical_condition" :value="scope.row.highBloodPressure"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="遗传病" align="center" prop="geneticDisease">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.have_medical_condition" :value="scope.row.heartDisease"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="癌症" align="center" prop="cancer">
+                    <template slot-scope="scope">
+          <dict-tag :options="dict.type.have_medical_condition" :value="scope.row.heartDisease"/>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
@@ -127,13 +147,49 @@
         <el-form-item label="用户Id" prop="oldId">
           <el-input v-model="form.oldId" placeholder="请输入用户Id" />
         </el-form-item> 
-        <el-form-item label="病历Id" prop="caseId">
+        <!-- <el-form-item label="病历Id" prop="caseId">
           <el-input v-model="form.caseId" placeholder="请输入用户Id" />
-        </el-form-item> 
+        </el-form-item>  -->
         <el-form-item label="糖尿病" prop="diabetes">
           <el-radio-group v-model="form.diabetes">
             <el-radio
-              v-for="dict in dict.type.sys_normal_disable"
+              v-for="dict in dict.type.have_medical_condition"
+              :key="dict.value"
+              :label="dict.value"
+            >{{dict.label}}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+         <el-form-item label="心脏病" prop="heartDisease">
+          <el-radio-group v-model="form.heartDisease">
+            <el-radio
+              v-for="dict in dict.type.have_medical_condition"
+              :key="dict.value"
+              :label="dict.value"
+            >{{dict.label}}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+         <el-form-item label="高血压" prop="highBloodPressure">
+          <el-radio-group v-model="form.highBloodPressure">
+            <el-radio
+              v-for="dict in dict.type.have_medical_condition"
+              :key="dict.value"
+              :label="dict.value"
+            >{{dict.label}}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+         <el-form-item label="遗传病" prop="geneticDisease">
+          <el-radio-group v-model="form.geneticDisease">
+            <el-radio
+              v-for="dict in dict.type.have_medical_condition"
+              :key="dict.value"
+              :label="dict.value"
+            >{{dict.label}}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+         <el-form-item label="癌症" prop="cancer">
+          <el-radio-group v-model="form.cancer">
+            <el-radio
+              v-for="dict in dict.type.have_medical_condition"
               :key="dict.value"
               :label="dict.value"
             >{{dict.label}}</el-radio>
@@ -157,7 +213,7 @@ import { listCase, getCase, delCase, addCase, updateCase } from "@/api/green/cas
 
 export default {
   name: "Post",
-  dicts: ['sys_normal_disable'],
+  dicts: ['sys_normal_disable','have_medical_condition'],
   data() {
     return {
       // 遮罩层

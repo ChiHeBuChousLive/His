@@ -60,4 +60,14 @@ public interface IConditionEquipmentService
      * @return 结果
      */
     public int deleteConditionEquipmentByEquipmentId(Long equipmentId);
+
+    /***
+     * 对物理设备暴露的接口信息
+     * @param Ip
+     * @param message
+     * @return
+     */
+    public int insertEquipmentInference(Long Ip,String message);
+
+
 }

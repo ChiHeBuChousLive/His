@@ -5,6 +5,8 @@ import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.condition.domain.ConditionEquipment;
 import com.ruoyi.condition.mapper.ConditionEquipmentMapper;
 import com.ruoyi.condition.service.IConditionEquipmentService;
+import com.ruoyi.green.domain.GreenUserEquipment;
+import com.ruoyi.green.service.IGreenUserEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class ConditionEquipmentServiceImpl implements IConditionEquipmentService
 {
     @Autowired
     private ConditionEquipmentMapper conditionEquipmentMapper;
+
+    @Autowired
+    private IGreenUserEquipmentService iGreenUserEquipmentService;
 
     /**
      * 查询设备
@@ -45,7 +50,7 @@ public class ConditionEquipmentServiceImpl implements IConditionEquipmentService
     }
 
     /**
-     * 新增设备
+     * 新增设备,新增设备并关联老人(当前配置新增设备必须关联老人Id)
      * 
      * @param conditionEquipment 设备
      * @return 结果
@@ -54,7 +59,17 @@ public class ConditionEquipmentServiceImpl implements IConditionEquipmentService
     public int insertConditionEquipment(ConditionEquipment conditionEquipment)
     {
         conditionEquipment.setCreateTime(DateUtils.getNowDate());
-        return conditionEquipmentMapper.insertConditionEquipment(conditionEquipment);
+        int i = conditionEquipmentMapper.insertConditionEquipment(conditionEquipment);
+        if (i>0){
+            ConditionEquipment conditionEquipment1 = conditionEquipmentMapper.selectLastEquipment();
+            Long oldId = conditionEquipment.getOldId();
+            Long equipmentId = conditionEquipment1.getEquipmentId();
+            GreenUserEquipment greenUserEquipment = new GreenUserEquipment();
+            greenUserEquipment.setOldId(oldId);
+            greenUserEquipment.setEquipmentId(equipmentId);
+            iGreenUserEquipmentService.insertGreenUserEquipment(greenUserEquipment);
+        }
+        return i;
     }
 
     /**
@@ -92,5 +107,10 @@ public class ConditionEquipmentServiceImpl implements IConditionEquipmentService
     public int deleteConditionEquipmentByEquipmentId(Long equipmentId)
     {
         return conditionEquipmentMapper.deleteConditionEquipmentByEquipmentId(equipmentId);
+    }
+
+    @Override
+    public int insertEquipmentInference(Long Ip, String message) {
+        return 0;
     }
 }

@@ -87,15 +87,21 @@ public class GreenOldCaseServiceImpl implements IGreenOldCaseService
     @Override
     public int insertGreenOldCase(GreenOldCase greenOldCase)
     {
-        GreenUserCase greenUserCase = new GreenUserCase();
-        List<GreenUserCase> list = new ArrayList<>();
-        greenUserCase.setCaseId(greenOldCase.getCaseId());
-        greenUserCase.setOldId(greenOldCase.getOldId());
-        list.add(greenUserCase);
-        userOldCaseMapper.batchUserCase(list);
-
         greenOldCase.setCreateTime(DateUtils.getNowDate());
-        return greenOldCaseMapper.insertGreenOldCase(greenOldCase);
+        int i = greenOldCaseMapper.insertGreenOldCase(greenOldCase);
+        if (i!=0){
+            GreenOldCase greenOldCase1 = greenOldCaseMapper.selectLast();
+            GreenUserCase greenUserCase = new GreenUserCase();
+            List<GreenUserCase> list = new ArrayList<>();
+            greenUserCase.setCaseId(greenOldCase1.getCaseId());
+            greenUserCase.setOldId(greenOldCase.getOldId());
+            list.add(greenUserCase);
+            userOldCaseMapper.batchUserCase(list);
+        }
+
+
+
+        return i;
     }
 
     /**
