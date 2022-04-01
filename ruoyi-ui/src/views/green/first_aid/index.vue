@@ -1,18 +1,23 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="父id节点" prop="parentId">
+    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="168px">
+      <el-form-item label="节点Id" prop="parentId">
         <el-input
           v-model="queryParams.parentId"
-          placeholder="请输入父id节点"
+          placeholder="请输入节点Id"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item>
+	    <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+      </el-form-item>
+
       <el-form-item label="名称" prop="aidName">
         <el-input
           v-model="queryParams.aidName"
-          placeholder="请输入一级节点为病历名，二级节点为药物名称"
+          placeholder="请输入名称"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -44,8 +49,27 @@
       default-expand-all
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column label="父id节点" prop="parentId" />
-      <el-table-column label="名称" align="center" prop="aidName" />
+      <el-table-column label="节点名称" prop="parentId" >
+            <template slot-scope="scope">
+              <el-tag v-if="scope.row.parentId == 0" type="success">
+                病情名称
+              </el-tag>
+              <el-tag v-else type="danger">
+                禁忌药物
+              </el-tag>
+            </template>
+      </el-table-column>
+      <el-table-column label="节点Id" prop="parentId" />
+      <el-table-column label="名称" align="center" prop="aidName" >
+      <template slot-scope="scope">
+              <el-tag v-if="scope.row.parentId == 0" type="success">
+             {{ scope.row.aidName}}
+              </el-tag>
+              <el-tag v-else type="danger">
+               {{scope.row.aidName}}
+              </el-tag>
+            </template>
+      </el-table-column>
       <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">

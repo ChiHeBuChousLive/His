@@ -1,17 +1,22 @@
 <p align="center">
-	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-d3d0a9303e11d522a06cd263f3079027715.png">
+	<img width="20%" height="20%" alt="logo" src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcQC0y8aTOuv8OT.MRqLxVqnXVy2uAsTXRNTwdzazW9DV6mEeRj.vSIuFFnK*KUyfH*PhEhYTMvUGYHFm5nlNF8E!/b&bo=9AH0AQAAAAADFzI!&rf=viewer_4">
 </p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi v3.8.1</h1>
-<h4 align="center">基于SpringBoot+Vue前后端分离的Java快速开发框架</h4>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">His</h1>
+<h4 align="center">基于SpringBoot+Vue前后端分离的乡村医疗扩展系统
+</h4>
 <p align="center">
-	<a href="https://gitee.com/y_project/RuoYi-Vue/stargazers"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
-	<a href="https://gitee.com/y_project/RuoYi-Vue"><img src="https://img.shields.io/badge/RuoYi-v3.8.1-brightgreen.svg"></a>
+	<a href="https://gitee.com/wuyao-kejiu/his"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
+	<a href="https://gitee.com/wuyao-kejiu/his"><img src="https://img.shields.io/badge/RuoYi-v3.8.1-brightgreen.svg"></a>
 	<a href="https://gitee.com/y_project/RuoYi-Vue/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
 </p>
 
-## 平台简介
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+
+## 项目简介
+
+乡村医疗云平台项目。本项目是一款应用于医院与诊所等医疗管理机构的业务系统，实现了管理机构工作的可视化，科室管理和事务处理的专业化，患者信息库的集成化，实现了医院与诊所的联动，为老年人设计就诊绿色通道，从而保障了老年人在紧急情况下的救援，增强了医护人员对患者健康状况的了解。
+
+## 技术架构
 
 * 前端采用Vue、Element UI。
 * 后端采用Spring Boot、Spring Security、Redis & Jwt。
@@ -22,8 +27,6 @@
 * 提供了单应用版本[RuoYi-Vue-fast](https://github.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://github.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
 * 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
 * 特别鸣谢：[element](https://github.com/ElemeFE/element)，[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，[eladmin-web](https://github.com/elunez/eladmin-web)。
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
-* 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
 
 ## 内置功能
 
@@ -36,62 +39,77 @@
 7.  参数管理：对系统动态配置常用参数。
 8.  通知公告：系统通知公告信息发布维护。
 9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10. 登录日志：系统登录日志记录查询包含登录异常。
-11. 在线用户：当前系统中活跃用户状态监控。
-12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 缓存监控：对系统的缓存信息查询，命令统计等。
-17. 在线构建器：拖动表单元素生成相应的HTML代码。
-18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+10.  登录日志：系统登录日志记录查询包含登录异常。
+11.  在线用户：当前系统中活跃用户状态监控。
+12.  定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
+13.  代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
+14.  系统接口：根据业务代码自动生成相关的api接口文档。
+15.  服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
+16.  缓存监控：对系统的缓存信息查询，命令统计等。
+17.  在线构建器：拖动表单元素生成相应的HTML代码。
+18.  连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
-## 在线体验
+## 搭建步骤
+
+1.
+
+2.
+
+3.
+
+## 在线演示
 
 - admin/admin123  
-- 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
 
-演示地址：http://vue.ruoyi.vip  
-文档地址：http://doc.ruoyi.vip
+演示地址： 
+文档地址：
+
+## 数据库关系图
+
+<div>
+<img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca3el1Ih5HsB*6aVLd4AsLim1tTyIzVfxpKBZ8mjfpwZFTV75xSHvXgSr6r5jw6Sq.E!/b&bo=7waAAv0GhQIDKRs!&rf=viewer_4"/>
+<img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca1STnNtT.NUdH2tGTpeZ8a4BTD4nJN9zhihHQDiSTh9D3CqAStnSjiIbpbFyKLcYiA!/b&bo=8gWAAnsIkQMDKZg!&rf=viewer_4">
+</div>
 
 ## 演示图
 
 <table>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/cd1f90be5f2684f4560c9519c0f2a232ee8.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/1cbcf0e6f257c7d3a063c0e3f2ff989e4b3.jpg"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcVOl*JbMRwqEPusmOf3twOjuJPv*lvUi9jaGPVdUlFFjJ1WGM8A*YCW1cDAhYdBdkxw52QY3zH434LedoH5diFw!/b&bo=eQcQBHkHEAQDiaw!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRfXzyQtVXamITJ6pN8bzijmasRLc8g5jMOooZBlhd1dkcj94ZTccuVQusL8qwUYBu4Q1Ni5LybA0uQnZoo39MI!/b&bo=agWAAnwHdQMDGdw!&rf=viewer_4"/></td>
     </tr>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8074972883b5ba0622e13246738ebba237a.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-9f88719cdfca9af2e58b352a20e23d43b12.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-39bf2584ec3a529b0d5a3b70d15c9b37646.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-936ec82d1f4872e1bc980927654b6007307.png"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRfXzyQtVXamITJ6pN8bziiI3hjuYB3M7CoYtaj24a0qK0CyEy.91a6SkEwtkF0ucGF3zG.*YwC9fbkZrwHcbT8!/b&bo=FQaAAoQHFwMDKQo!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcZD3vF*u3GEeKhwJCX99ENUNJ3ZeY684B*kT8.CsPG9wIXDhoFK8HHQ0iSlWFqkBD.Ar9BcSqBcMnWc3MgpAQjs!/b&bo=agWAAucGMAMDOSM!&rf=viewer_4"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-b2d62ceb95d2dd9b3fbe157bb70d26001e9.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d67451d308b7a79ad6819723396f7c3d77a.png"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcWnHYJd5UOAVYOXr5AnEZ2skQsEWDhKk722h93dHWWKb3ZinD.ZluIeZ4p27a5nI*v6chvJt4nFuIPDBJMr8sBI!/b&bo=PweAAn8HlgIDGWo!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcWnHYJd5UOAVYOXr5AnEZ2v*a9d3OQmv*50jz9dvgv9FK*81.Y8Cu0MoX7RzWhwWejcOSKi3t*DX3x5ck8RZpsI!/b&bo=mAWAAnAHUwMDGQQ!&rf=viewer_4"/></td>
     </tr>	 
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/5e8c387724954459291aafd5eb52b456f53.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/644e78da53c2e92a95dfda4f76e6d117c4b.jpg"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXgpr9Jl0gx.rgd0FIswdr1Dlhg4OAALCQaMl*q7z56rtBhnGtCqL9e0IbWn8EA2yM1GakcGgrvBgIMsieavWjY!/b&bo=FgWAArcHywMDGdU!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTWILYGxwIDz0qJQMbwjYkD76Sv5B.ddnGbvsLrdHtoj7XPLR.tlNeyg1CTvRVI.F81roB0tfFIhmLyhPpPm29Y!/b&bo=9QWAAnIHIAMDGRg!&rf=viewer_4"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8370a0d02977eebf6dbf854c8450293c937.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-49003ed83f60f633e7153609a53a2b644f7.png"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTWILYGxwIDz0qJQMbwjYkCz41dGdZudZOYynHFxe.essmGxPzJuYJTWhFnC2t.fl1s4zvMc6ghn6bmIdJJF1Rc!/b&bo=9QWAAoMHJwMDGe4!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb1v3H9mXKwYQmOkJLneD0FAOOyTNVWCR5cOa8KQiAy0rlC42YqUe0O09IqOiHQZGVU!/b&bo=fwcPBH8HDwQDGTw!&rf=viewer_4"/></td>
     </tr>
 	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d4fe726319ece268d4746602c39cffc0621.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-c195234bbcd30be6927f037a6755e6ab69c.png"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXhno*VssN928eLPLmHWQkyLrS8EDGbeKCV1.E7*0UorhL2jN4j8VkgViJxsG1yqLGk!/b&bo=nwaAAoUH1wIDGXA!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXhX..tI2qqV1A987*VK3nnD3xgmQhUzkTqHo3ChUSFrUzlhOuMHkJ3j2v51NZ6p*Q0!/b&bo=nQaAAoEH1gIDGXc!&rf=viewer_4"/></td>
     </tr>
     <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/b6115bc8c31de52951982e509930b20684a.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-5e4daac0bb59612c5038448acbcef235e3a.png"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb3*D.6WgsjtAF9KI6YdSg09l3Jlx5PdrnHJfr36r7W6TlmG6sze91VsuOMC9qKSUjg!/b&bo=XQReAl0EXgIDGTw!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXjWrktcNyZqWunTH4qTpSC5ZsRaVSLt7GIpWg9bijyI6GJ746jKNe81Nvko25hpQnE!/b&bo=rgZ.Aq4GfgIDGTw!&rf=viewer_4"/></td>
+    </tr>
+     <tr>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb2arTeVzVoDsWvAKj22*4tKKs9Ev3q.BfNNMsGQHT3uB7hf2kKnmONU4.Vpv3cuhGc!/b&bo=gAJrBXYDgAcBGSA!&rf=viewer_4"/></td>
+        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mceU.6DIAvmDf*Yo1dSHq2afZAnaDKsnW2WE6pkRbfeowaP6kMXXI9Oh5DKHLO8Ed5dh0.vFeV9e3Do7VcdLQXPo!/b&bo=VAR7BFQEewQDKQw!&rf=viewer_4"/></td>
     </tr>
 </table>
 
 
-## 若依前后端分离交流群
+​    
 
-QQ群： [![加入QQ群](https://img.shields.io/badge/已满-937441-blue.svg)](https://jq.qq.com/?_wv=1027&k=5bVB1og) [![加入QQ群](https://img.shields.io/badge/已满-887144332-blue.svg)](https://jq.qq.com/?_wv=1027&k=5eiA4DH) [![加入QQ群](https://img.shields.io/badge/已满-180251782-blue.svg)](https://jq.qq.com/?_wv=1027&k=5AxMKlC) [![加入QQ群](https://img.shields.io/badge/已满-104180207-blue.svg)](https://jq.qq.com/?_wv=1027&k=51G72yr) [![加入QQ群](https://img.shields.io/badge/已满-186866453-blue.svg)](https://jq.qq.com/?_wv=1027&k=VvjN2nvu) [![加入QQ群](https://img.shields.io/badge/已满-201396349-blue.svg)](https://jq.qq.com/?_wv=1027&k=5vYAqA05) [![加入QQ群](https://img.shields.io/badge/已满-101456076-blue.svg)](https://jq.qq.com/?_wv=1027&k=kOIINEb5) [![加入QQ群](https://img.shields.io/badge/已满-101539465-blue.svg)](https://jq.qq.com/?_wv=1027&k=UKtX5jhs) [![加入QQ群](https://img.shields.io/badge/已满-264312783-blue.svg)](https://jq.qq.com/?_wv=1027&k=EI9an8lJ) [![加入QQ群](https://img.shields.io/badge/167385320-blue.svg)](https://jq.qq.com/?_wv=1027&k=SWCtLnMz) 点击按钮入群。
+ 
+
