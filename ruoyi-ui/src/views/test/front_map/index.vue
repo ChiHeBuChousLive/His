@@ -88,6 +88,8 @@ export default {
       map.centerAndZoom(new BMapGL.Point(oldXy[0], oldXy[1]), 11);
       //设置可滚轮
       map.enableScrollWheelZoom(true);
+      //设置地图样式
+      map.setMapStyleV2({styleJson: styleJson1});
 
       //3d地图
       map.setHeading(64.5);
@@ -100,9 +102,15 @@ export default {
       var driving = new BMapGL.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true,}});
       driving.search(p1,p2);
 
+      //创建医院和老人的图标
+      //这边不知道为什么不加载
+      var oldIcon = new BMapGL.Icon("./public/mapstyle/老人.png", new BMapGL.Size(52, 26));
+      var clinicIcon = new BMapGL.Icon("./public/mapstyle/诊所.png", new BMapGL.Size(52, 26));
+
+
       //创建起始点和终点
-      var marker1 = new BMapGL.Marker(p1);
-      var marker2 =new BMapGL.Marker(p2);
+      var marker1 = new BMapGL.Marker(p1,);
+      var marker2 =new BMapGL.Marker(p2,);
       map.addOverlay(marker1);
       map.addOverlay(marker2);
 
