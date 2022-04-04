@@ -75,6 +75,21 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/simulator',
+    component: Layout,
+    hidden: true,
+    redirect: 'noredirect',
+    children: [
+      {
+        path: 'heart',
+        component: () => import('@/views/simulator/notdetection/heart_rate_chart'),
+        hidden: true,
+        name: 'heart',
+        meta: { title: '设备信息显示', icon: 'user' }
+      }
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     hidden: true,
