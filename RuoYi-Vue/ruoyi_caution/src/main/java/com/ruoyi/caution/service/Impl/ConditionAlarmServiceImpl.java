@@ -132,7 +132,9 @@ public class ConditionAlarmServiceImpl implements IConditionAlarmService
     @Override
     public int deviceRequestInterface(ConditionEquipment conditionEquipment) {
         // 拿取设备关联用户
-        GreenUserEquipment greenUserEquipment = greenUserEquipmentMapper.selectGreenUserByEquipmentId(conditionEquipment.getEquipmentId());
+        System.out.println("执行了");
+        Long equipmentId = conditionEquipment.getEquipmentId();
+        GreenUserEquipment greenUserEquipment = greenUserEquipmentMapper.selectGreenUserByEquipmentId(equipmentId);
         GreenUser greenUser = greenUserService.selectUserById(greenUserEquipment.getOldId());
         String oldName = greenUser.getOldName();
         // 拿取老人病例

@@ -122,7 +122,9 @@ export default {
   mounted() {},
   methods: {
     submitForm() {
-      this.$router.push('/simulator/heart')
+      // console.log(this.formData.switchNuber)
+      this.$router.push({ path: "/simulator/heart", query: {id: this.formData.switchNuber} });
+      // this.$router.push('/simulator/heart')
       // this.$refs['elForm'].validate(valid => {
       //   if (!valid) return
       //   // TODO 提交表单

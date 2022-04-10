@@ -42,3 +42,11 @@ export function delAlarm(alarmId) {
     method: 'delete'
   })
 }
+
+export function getMonitoring(equipment){
+  return request({
+    url: '/caution/alarm/monitoring ',
+    method: 'get',
+    data: equipment
+  })
+}

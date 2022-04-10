@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.caution.domain.ConditionAlarm;
 import com.ruoyi.caution.service.IConditionAlarmService;
+import com.ruoyi.condition.domain.ConditionEquipment;
+import com.ruoyi.condition.service.IConditionEquipmentService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,27 @@ public class ConditionAlarmController extends BaseController
 {
     @Autowired
     private IConditionAlarmService conditionAlarmService;
+    @Autowired
+    private IConditionEquipmentService equipmentService;
+
+    @GetMapping("/monitoring")
+    public void deviceRequestInterface(ConditionEquipment conditionEquipment){
+        int i=0;
+//        if(conditionEquipment!=null){
+//            i = conditionAlarmService.deviceRequestInterface(conditionEquipment);
+//        }else{
+            ConditionEquipment conditionEquipment2 = equipmentService.selectConditionEquipmentByEquipmentId((long) 1);
+            i = conditionAlarmService.deviceRequestInterface(conditionEquipment2);
+//        }
+
+        if (i!=0){
+            System.out.println("成功");
+        }else{
+            System.out.println("失败");
+        }
+
+    }
+
 
     /**
      * 查询设备警报管理列表

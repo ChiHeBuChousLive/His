@@ -12,7 +12,7 @@
           "
         ></div>
       </el-col>
-      <!-- <el-col :span="12">
+      <el-col :span="12">
         <div
           id="myChartOxygen "
           style="
@@ -22,7 +22,7 @@
             margin-left: 20px;
           "
         ></div>
-      </el-col> -->
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -35,6 +35,65 @@ export default {
   data() {
     return {
       // light = 0,
+      // 血氧饱和度：
+      OxygenseriesObjcet1: {
+        name: null,
+        type: "line",
+        data: [],
+        endLable: { show: false },
+      },
+      OxygenseriesObjcet2: {
+        name: null,
+        type: "line",
+        data: [],
+        endLable: { show: false },
+      },
+      OxygenseriesObjcet3: {
+        name: null,
+        type: "line",
+        data: [],
+        endLable: { show: false },
+      },
+      OxygenseriesObjcet4: {
+        name: null,
+        type: "line",
+        data: [],
+        endLable: { show: false },
+      },
+      seriesObjcet5: {
+        name: null,
+        type: "line",
+        data: [],
+        endLable: { show: false },
+      },
+      
+      OxygenlegendName1: {
+        name: null,
+      },
+      OxygenlegendName2: {
+        name: null,
+      },
+      OxygenlegendName3: {
+        name: null,
+      },
+      OxygenlegendName4: {
+        name: null,
+      },
+      OxygenlegendName5: {
+        name: null,
+      },
+
+      datasOxygen: {
+        data1: [],
+        data2: [],
+        data3: [],
+        data4: [],
+        data5: [],
+      },
+
+    myChartOxygen:null,
+
+
   // 心率
       datas: {
         data1: [],

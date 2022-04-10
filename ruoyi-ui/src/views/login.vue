@@ -173,6 +173,8 @@ export default {
 .login-form {
   border-radius: 6px;
   background: #d5f3c9;
+  // filter:progid:DXImageTransform.Microsoft.gradient(opacity=0.75,startcolorstr=#d5f3c9,endcolorstr=#b4f09d);
+  // background-opacity:0.25;
   width: 400px;
   padding: 25px 25px 5px 25px;
   .el-input {
@@ -181,6 +183,10 @@ export default {
       height: 38px;
     }
   }
+  // background{
+  //     background: #d5f3c9;
+  //     opacity:0.85;
+  //     }
   .input-icon {
     height: 39px;
     width: 14px;

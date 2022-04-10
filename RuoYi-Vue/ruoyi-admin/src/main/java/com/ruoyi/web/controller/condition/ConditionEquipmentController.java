@@ -103,4 +103,5 @@ public class ConditionEquipmentController extends BaseController
     {
         return toAjax(conditionEquipmentService.deleteConditionEquipmentByEquipmentIds(equipmentIds));
     }
+
 }

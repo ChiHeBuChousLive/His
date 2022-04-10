@@ -6,7 +6,6 @@
 </h4>
 <p align="center">
 	<a href="https://gitee.com/wuyao-kejiu/his"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
-	<a href="https://gitee.com/wuyao-kejiu/his"><img src="https://img.shields.io/badge/RuoYi-v3.8.1-brightgreen.svg"></a>
 	<a href="https://gitee.com/y_project/RuoYi-Vue/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
 </p>
 
@@ -19,51 +18,113 @@
 
 ## 技术架构
 
-* 前端采用Vue、Element UI。
-* 后端采用Spring Boot、Spring Security、Redis & Jwt。
+* 前端采用Vue、Element UI、Echarts
+* 后端采用Spring Boot、Spring Security、Redis & Jwt、腾讯云SMS、阿里云OSS、Docker。
 * 权限认证使用Jwt，支持多终端认证系统。
-* 支持加载动态权限菜单，多方式轻松权限控制。
-* 高效率开发，使用代码生成器可以一键生成前后端代码。
-* 提供了技术栈（[Vue3](https://v3.cn.vuejs.org) [Element Plus](https://element-plus.org/zh-CN) [Vite](https://cn.vitejs.dev)）版本[RuoYi-Vue3](https://github.com/yangzongzhuan/RuoYi-Vue3)，保持同步更新。
-* 提供了单应用版本[RuoYi-Vue-fast](https://github.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://github.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
-* 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
-* 特别鸣谢：[element](https://github.com/ElemeFE/element)，[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，[eladmin-web](https://github.com/elunez/eladmin-web)。
+* 其他技术Gitee使用、Nginx使用、Docker使用、机器学习相关知识、微服务结构（此版本仅为过渡）
+* 项目开放了大量的接口，方便与设备进行链接、交互。
+* 提供了CSDN使用开发技术文章保持同步更新、方便用户进行使用。
+* 后续会开发基于微服务版本的，方便项目的移植
 
 ## 内置功能
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10.  登录日志：系统登录日志记录查询包含登录异常。
-11.  在线用户：当前系统中活跃用户状态监控。
-12.  定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13.  代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14.  系统接口：根据业务代码自动生成相关的api接口文档。
-15.  服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16.  缓存监控：对系统的缓存信息查询，命令统计等。
-17.  在线构建器：拖动表单元素生成相应的HTML代码。
-18.  连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+​        基本的医院人员各项功能：（不提供其他医院基础功能）
+
+1. 用户管理：用户是系统操作者，该功能主要完成系统用户配置。
+
+2. 部门管理：配置医院各部门，以树结构展现支持数据权限。
+
+3. 岗位管理：配置系统用户所属担任职务。
+
+4. 角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
+
+5. 乡村诊所管理：对门诊医生基本管理
+
+   
+
+   项目核心的功能：
+
+6. 绿色通道用户管理：主要面向乡村及空巢老人，功能包含老人的病历，问诊等信息
+
+7. 病历禁忌药物：针对患者病情一键查询禁忌药物，与设备报警，地图定位功能共同构建了紧急救治功能
+
+8. 设备状态监控管理：对接入接口的设备进行状态监控。
+
+9. 异常警报管理：处理异常状态的设备。
+
+10. 地图定位与紧急通知：根据异常警报对数据异常的设备进行定位，规划路线，就近通知门诊。
+
+11. 紧急救治管理：获取定位以后，获取设备对应患者信息，根据患者以往信息进行病情推演预测，让医生及时准备救治方案。
+
+12. 测试功能： 提供两套通过软件模拟的物理设备（自带用户检测状态判别与纯数据检测设备），可以为硬件提供必须的测试模拟信息。
+
+    
+
+    项目管理即扩展功能
+
+13. 通知管理：根据业务代码自动生成相关的api接口文档。
+
+14. 日志管理：拖动表单元素生成相应的HTML代码。
+
+15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
+
+16. 缓存监控：对系统的缓存信息查询，命令统计等。
+
+17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+
+18. 提供预留扩充：项目以及配置好大量中间件（Elasticsearch或者Solr、RabbitMQ）
 
 ## 搭建步骤
 
-1.
+推荐：前往gitee进行下载，以避免版本过旧导致的各种bug
 
-2.
+https://gitee.com/wuyao-kejiu/his
 
-3.
+1.首先配置数据库导入sql中的数据库脚本，必须保持库的结构，否则项目会出现bug
 
-## 在线演示
+2.导入到`Eclipse`，菜单 `File` -> `Import`，然后选择 `Maven` -> `Existing Maven Projects`，点击 `Next`> 按钮，选择工作目录，然后点击 `Finish` 按钮，即可成功导入。`Eclipse`会自动加载`Maven`依赖包，初次加载会比较慢，运行项目出现山河已秋表示启动成功
 
-- admin/admin123  
+3.前端配置
 
-演示地址： 
-文档地址：
+```bash
+# 进入项目目录
+cd ruoyi-ui
+# 安装依赖
+npm install
+# 强烈建议不要用直接使用 cnpm 安装，会有各种诡异的 bug，可以通过重新指定 registry 来解决 npm 安装速度慢的问题。
+npm install --registry=https://registry.npmmirror.com
+# 本地开发 启动项目
+npm run dev
+```
+
+4.打开浏览器，输入：([http://localhost:80 (opens new window)](http://localhost/)) 默认账户/密码 `admin/admin123`）
+若能正确展示登录页面，并能成功登录，菜单及页面展示正常，则表明环境搭建成功
+
+## 关于我们（山河已秋）：
+
+​	目前团队主要的开发人员都是学生（包括me）：所以有很多地方的设计可能完全不到位，各种问题以及bug亦可能处理不了，
+
+​	**但，我们已经在路上了！**
+
+​	做这个之前有朋友总是问我你做这个有啥用啊，不浪费时间吗，你这项目能参加竞赛吗，也没什么经济性啊，为什么要去做哪？
+
+​	**我想说的是：只要你感觉它有意义？哪怕只有一丁点意义，一丁点作用就不要去管那么多得失，不要把自己活着那么斤斤计较。这就是我们，一群将永远奔走在学习路上同时希望自己能用自己所学在这个时代发出自己微弱的光芒的孩子。**
+
+## 团队主要的人员包括：
+
+​	折纸：java后端，前端，数据库，基础硬件通信，机器学习
+
+​	鹏哥：大数据分析，机器学习，数据可视化（Echarts）深，度学习（还不会，说能学会）
+
+​	攸（LIGO）：python后端，前端（写的贼丑），
+
+​	吃喝不愁的老谭：java后端
+
+​	i狗子：java后端
+
+团队没有专业的前台，希望在后续的路上能碰上。。。这群糙汉的审美我实在了受不了
+
+
 
 ## 数据库关系图
 
@@ -71,6 +132,9 @@
 <img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca3el1Ih5HsB*6aVLd4AsLim1tTyIzVfxpKBZ8mjfpwZFTV75xSHvXgSr6r5jw6Sq.E!/b&bo=7waAAv0GhQIDKRs!&rf=viewer_4"/>
 <img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca1STnNtT.NUdH2tGTpeZ8a4BTD4nJN9zhihHQDiSTh9D3CqAStnSjiIbpbFyKLcYiA!/b&bo=8gWAAnsIkQMDKZg!&rf=viewer_4">
 </div>
+
+
+
 
 
 ## 演示图
