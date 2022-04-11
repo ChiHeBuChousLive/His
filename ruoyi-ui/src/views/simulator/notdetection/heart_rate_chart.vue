@@ -35,6 +35,9 @@ export default {
   data() {
     return {
       // light = 0,
+      smsflag:[0,0,0,0,0],
+
+
   // 心率
       datas: {
         data1: [],
@@ -255,14 +258,16 @@ export default {
 
     async monitoringDate(data,Id){
       // console.log(data)
-      //   if(data <75 || data>80){
-      //       var x = await getMonitoring(this.equipment)
-      //   }
+        if(data <75 || data>80&&smsflag[Id]!=1){
+            // var x = await getMonitoring(this.equipment)
+             console.log("发送了短信")
+             smsflag[Id]=1
+        }
     },
 
     //添加数据
     addData() {
-       debugger;
+      //  debugger;
       this.newtim = new Date(this.newtim + this.oneMinutes);
       var newheart1 = Math.random() * 9 - 4;
       var newheart2 = Math.random() * 7 - 4;
@@ -370,7 +375,7 @@ export default {
    
   },
   mounted() {
-    debugger;
+    // debugger;
     this.myCharts = echarts.init(document.getElementById("myChart"));
     this.createDate();
     this.myCharts.setOption(this.option);

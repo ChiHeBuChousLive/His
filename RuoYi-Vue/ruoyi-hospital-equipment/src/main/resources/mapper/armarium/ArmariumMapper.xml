@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.armarium.mapper.ArmariumMapper">
+    
+    <resultMap type="Armarium" id="ArmariumResult">
+        <result property="armariumId"    column="armarium_id"    />
+        <result property="armariumName"    column="armarium_name"    />
+        <result property="armariumTpye"    column="armarium_tpye"    />
+        <result property="armariumModels"    column="armarium_models"    />
+        <result property="armariumLocation"    column="armarium_location"    />
+        <result property="armariumLeader"    column="armarium_leader"    />
+        <result property="clinicPhone"    column="clinic_phone"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectArmariumVo">
+        select armarium_id, armarium_name, armarium_tpye, armarium_models, armarium_location, armarium_leader, clinic_phone, status, create_by, create_time, update_by, update_time, remark from armarium
+    </sql>
+
+
+
+
+    <select id="selectArmariumList" parameterType="Armarium" resultMap="ArmariumResult">
+        <include refid="selectArmariumVo"/>
+        <where>  
+            <if test="armariumName != null  and armariumName != ''"> and armarium_name like concat('%', #{armariumName}, '%')</if>
+            <if test="armariumTpye != null  and armariumTpye != ''"> and armarium_tpye = #{armariumTpye}</if>
+            <if test="armariumModels != null  and armariumModels != ''"> and armarium_models = #{armariumModels}</if>
+            <if test="armariumLocation != null  and armariumLocation != ''"> and armarium_location = #{armariumLocation}</if>
+            <if test="armariumLeader != null  and armariumLeader != ''"> and armarium_leader = #{armariumLeader}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectArmariumByArmariumId" parameterType="Long" resultMap="ArmariumResult">
+        <include refid="selectArmariumVo"/>
+        where armarium_id = #{armariumId}
+    </select>
+        
+    <insert id="insertArmarium" parameterType="Armarium" useGeneratedKeys="true" keyProperty="armariumId">
+        insert into armarium
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="armariumName != null and armariumName != ''">armarium_name,</if>
+            <if test="armariumTpye != null and armariumTpye != ''">armarium_tpye,</if>
+            <if test="armariumModels != null">armarium_models,</if>
+            <if test="armariumLocation != null">armarium_location,</if>
+            <if test="armariumLeader != null">armarium_leader,</if>
+            <if test="clinicPhone != null">clinic_phone,</if>
+            <if test="status != null and status != ''">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="armariumName != null and armariumName != ''">#{armariumName},</if>
+            <if test="armariumTpye != null and armariumTpye != ''">#{armariumTpye},</if>
+            <if test="armariumModels != null">#{armariumModels},</if>
+            <if test="armariumLocation != null">#{armariumLocation},</if>
+            <if test="armariumLeader != null">#{armariumLeader},</if>
+            <if test="clinicPhone != null">#{clinicPhone},</if>
+            <if test="status != null and status != ''">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateArmarium" parameterType="Armarium">
+        update armarium
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="armariumName != null and armariumName != ''">armarium_name = #{armariumName},</if>
+            <if test="armariumTpye != null and armariumTpye != ''">armarium_tpye = #{armariumTpye},</if>
+            <if test="armariumModels != null">armarium_models = #{armariumModels},</if>
+            <if test="armariumLocation != null">armarium_location = #{armariumLocation},</if>
+            <if test="armariumLeader != null">armarium_leader = #{armariumLeader},</if>
+            <if test="clinicPhone != null">clinic_phone = #{clinicPhone},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where armarium_id = #{armariumId}
+    </update>
+
+    <delete id="deleteArmariumByArmariumId" parameterType="Long">
+        delete from armarium where armarium_id = #{armariumId}
+    </delete>
+
+    <delete id="deleteArmariumByArmariumIds" parameterType="String">
+        delete from armarium where armarium_id in 
+        <foreach item="armariumId" collection="array" open="(" separator="," close=")">
+            #{armariumId}
+        </foreach>
+    </delete>
+</mapper>

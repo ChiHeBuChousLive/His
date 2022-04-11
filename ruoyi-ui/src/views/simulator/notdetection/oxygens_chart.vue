@@ -1,9 +1,8 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="12">
         <div
-          id="myChart"
+          id="myChartOxygen"
           style="
             width: 700px;
             height: 500px;
@@ -11,18 +10,6 @@
             margin-left: 20px;
           "
         ></div>
-      </el-col>
-      <el-col :span="12">
-        <div
-          id="myChartOxygen "
-          style="
-            width: 700px;
-            height: 500px;
-            margin-top: 40px;
-            margin-left: 20px;
-          "
-        ></div>
-      </el-col>
     </el-row>
   </div>
 </template>
@@ -32,6 +19,7 @@ import echarts from "echarts";
 import { getMonitoring } from "@/api/caution/alarm";
 
 export default {
+    
   data() {
     return {
       // light = 0,
@@ -60,7 +48,7 @@ export default {
         data: [],
         endLable: { show: false },
       },
-      seriesObjcet5: {
+      OxygenseriesObjcet5: {
         name: null,
         type: "line",
         data: [],
@@ -91,77 +79,18 @@ export default {
         data5: [],
       },
 
-    myChartOxygen:null,
-
-
-  // 心率
-      datas: {
         data1: [],
         data2: [],
         data3: [],
         data4: [],
         data5: [],
-      },
-      seriesObjcet1: {
-        name: null,
-        type: "line",
-        data: [],
-        endLable: { show: false },
-      },
-      seriesObjcet2: {
-        name: null,
-        type: "line",
-        data: [],
-        endLable: { show: false },
-      },
-      seriesObjcet3: {
-        name: null,
-        type: "line",
-        data: [],
-        endLable: { show: false },
-      },
-      seriesObjcet4: {
-        name: null,
-        type: "line",
-        data: [],
-        endLable: { show: false },
-      },
-      seriesObjcet5: {
-        name: null,
-        type: "line",
-        data: [],
-        endLable: { show: false },
-      },
-      
-      legendName1: {
-        name: null,
-      },
-      legendName2: {
-        name: null,
-      },
-      legendName3: {
-        name: null,
-      },
-      legendName4: {
-        name: null,
-      },
-      legendName5: {
-        name: null,
-      },
 
-      // data1: [],
-      // data2: [],
-      // data3: [],
-      // data4: [],
-      // data5: [],
+    myChartOxygen: null,
+    oneMinutes: 60 * 1000,
+    oxygen: 60 + Math.random() * 45,
+    time: [],
 
-      myCharts: null,
-      oneMinutes: 60 * 1000,
-      heart: 60 + Math.random() * 50,
-      time: [],
-
-
-      equipment: {
+    equipment: {
         equipmentId: 1,
       },
       // starttime :
@@ -170,7 +99,7 @@ export default {
       day: null,
       option: {
         tooltip: { show: true, trigger: "axis" },
-        title: { text: "心率检测" },
+        title: { text: "血氧检测" },
         xAxis: { type: "category", data: null },
         yAxis: { type: "value", scale: false, splitLine: { show: false } },
         legend: {
@@ -181,13 +110,13 @@ export default {
           bottom: 20,
           data: [
             {
-              name: "用户1心率",
+              name: "用户1血氧",
             },
           ],
         },
         series: [
           {
-            name: "用户1心率",
+            name: "用户1血氧",
             type: "line",
             data: this.data1,
             endLable: { show: false },
@@ -201,23 +130,23 @@ export default {
       // console.log(this.$route.query.id);
       for (var j = 0; j < this.$route.query.id; j++) {
         for (var i = 0; i < 120; i++) {
-          var newheart1 = Math.random() * 6 - 3;
+          var newoxygen1 = Math.random() * 6 - 3;
           // this.dataname = this.dataname + j.toString();
           switch (j + 1) {
             case 1:
-              this.datas.data1.push(Math.round(this.heart + newheart1));
+              this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen1));
               break;
             case 2:
-              this.datas.data2.push(Math.round(this.heart + newheart1));
+              this.datasOxygen.data2.push(Math.round(this.oxygen + newoxygen1));
               break;
             case 3:
-              this.datas.data3.push(Math.round(this.heart + newheart1));
+              this.datasOxygen.data3.push(Math.round(this.oxygen + newoxygen1));
               break;
             case 4:
-              this.datas.data4.push(Math.round(this.heart + newheart1));
+              this.datasOxygen.data4.push(Math.round(this.oxygen + newoxygen1));
               break;
             case 5:
-              this.datas.data5.push(Math.round(this.heart + newheart1));
+              this.datasOxygen.data5.push(Math.round(this.oxygen + newoxygen1));
               break;
           }
         }
@@ -243,7 +172,7 @@ export default {
 
       this.option = {
         tooltip: { show: true, trigger: "axis" },
-        title: { text: "心率检测" },
+        title: { text: "血氧检测" },
         xAxis: { type: "category", data: this.time },
         yAxis: { type: "value", scale: false, splitLine: { show: false } },
         legend: {
@@ -258,45 +187,45 @@ export default {
       };
       var name = null;
       for (var j = 0; j < this.$route.query.id; j++) {
-        name = "用户" + (j + 1) + "心率";
+        name = "用户" + (j + 1) + "血氧";
 
         switch (j + 1) {
           case 1:
  
-            this.legendName1.name = name;
-            this.option.legend.data.push(this.legendName1);
-              this.seriesObjcet1.name = name;
-           this.seriesObjcet1.data = this.datas.data1;
-        this.option.series.push(this.seriesObjcet1);
+            this.OxygenlegendName1.name = name;
+            this.option.legend.data.push(this.OxygenlegendName1);
+              this.OxygenseriesObjcet1.name = name;
+           this.OxygenseriesObjcet1.data = this.datasOxygen.data1;
+        this.option.series.push(this.OxygenseriesObjcet1);
             break;
           case 2:
-            this.legendName2.name = name;
-            this.option.legend.data.push(this.legendName2);
-                          this.seriesObjcet2.name = name;
-           this.seriesObjcet2.data = this.datas.data2;
-        this.option.series.push(this.seriesObjcet2);
+            this.OxygenlegendName2.name = name;
+            this.option.legend.data.push(this.OxygenlegendName2);
+                          this.OxygenseriesObjcet2.name = name;
+           this.OxygenseriesObjcet2.data = this.datasOxygen.data2;
+        this.option.series.push(this.OxygenseriesObjcet2);
             break;
           case 3:
-            this.legendName3.name = name;
-            this.option.legend.data.push(this.legendName3);
-                this.seriesObjcet3.name = name;
-           this.seriesObjcet3.data = this.datas.data3;
-        this.option.series.push(this.seriesObjcet3);
+            this.OxygenlegendName3.name = name;
+            this.option.legend.data.push(this.OxygenlegendName3);
+                this.OxygenseriesObjcet3.name = name;
+           this.OxygenseriesObjcet3.data = this.datasOxygen.data3;
+        this.option.series.push(this.OxygenseriesObjcet3);
             break;
           case 4:
-            this.legendName4.name = name;
-            this.option.legend.data.push(this.legendName4);
-                                      this.seriesObjcet4.name = name;
-           this.seriesObjcet4.data = this.datas.data4;
-        this.option.series.push(this.seriesObjcet4);
+            this.OxygenlegendName4.name = name;
+            this.option.legend.data.push(this.OxygenlegendName4);
+                                      this.OxygenseriesObjcet4.name = name;
+           this.OxygenseriesObjcet4.data = this.datasOxygen.data4;
+        this.option.series.push(this.OxygenseriesObjcet4);
             break;
           case 5:
       
-            this.legendName5.name = name;
-            this.option.legend.data.push(this.legendName5);
-             this.seriesObjcet5.name = name;
-           this.seriesObjcet5.data = this.datas.data5;
-        this.option.series.push(this.seriesObjcet5);
+            this.OxygenlegendName5.name = name;
+            this.option.legend.data.push(this.OxygenlegendName5);
+             this.OxygenseriesObjcet5.name = name;
+           this.OxygenseriesObjcet5.data = this.datasOxygen.data5;
+        this.option.series.push(this.OxygenseriesObjcet5);
             break;
         }
 
@@ -321,13 +250,13 @@ export default {
 
     //添加数据
     addData() {
-       debugger;
+    //    debugger;
       this.newtim = new Date(this.newtim + this.oneMinutes);
-      var newheart1 = Math.random() * 9 - 4;
-      var newheart2 = Math.random() * 7 - 4;
-      var newheart3 = -20+Math.random() * 40;
-      var newheart4 = Math.random() * 9 - 5;
-      var newheart5 = Math.random() * 7 - 3;
+      var newoxygen1 = Math.random() * 9 - 4;
+      var newoxygen2 = Math.random() * 7 - 4;
+      var newoxygen3 = -20+Math.random() * 40;
+      var newoxygen4 = Math.random() * 9 - 5;
+      var newoxygen5 = Math.random() * 7 - 3;
       var hours = this.initDate(this.newtim.getHours());
       var minutes = this.initDate(this.newtim.getMinutes());
       var montes = this.initDate(this.newtim.getMonth() + 1);
@@ -342,86 +271,86 @@ export default {
      var b = this.$route.query.id
     //  console.log(b==2)
       if(b == 1){
-        this.datas.data1.shift();
-          this.datas.data1.push(Math.round(this.heart + newheart5));
-          this.monitoringDate(this.datas.data1[0],1)
+        this.datasOxygen.data1.shift();
+          this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen5));
+          this.monitoringDate(this.datasOxygen.data1[0],1)
       }else if (b == 2){
-        this.datas.data1.shift();
-          this.datas.data1.push(Math.round(this.heart + newheart5));
-          this.datas.data2.shift();
+        this.datasOxygen.data1.shift();
+          this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen5));
+          this.datasOxygen.data2.shift();
           // debugger
-          this.datas.data2.push(Math.round(this.heart + newheart4));
-          this.monitoringDate(this.datas.data1[0],1)
-          this.monitoringDate(this.datas.data2[0],2)
+          this.datasOxygen.data2.push(Math.round(this.oxygen + newoxygen4));
+          this.monitoringDate(this.datasOxygen.data1[0],1)
+          this.monitoringDate(this.datasOxygen.data2[0],2)
       }else if(b == 3){
-                this.datas.data1.shift();
-          this.datas.data1.push(Math.round(this.heart + newheart5));
-          this.datas.data2.shift();
-          this.datas.data2.push(Math.round(this.heart + newheart4));
-                    this.datas.data3.shift();
-          this.datas.data3.push(Math.round(this.heart + newheart3));
-                    this.monitoringDate(this.datas.data1[0],1)
-          this.monitoringDate(this.datas.data2[0],2)
-          this.monitoringDate(this.datas.data3[0],3)
+                this.datasOxygen.data1.shift();
+          this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen5));
+          this.datasOxygen.data2.shift();
+          this.datasOxygen.data2.push(Math.round(this.oxygen + newoxygen4));
+                    this.datasOxygen.data3.shift();
+          this.datasOxygen.data3.push(Math.round(this.oxygen + newoxygen3));
+                    this.monitoringDate(this.datasOxygen.data1[0],1)
+          this.monitoringDate(this.datasOxygen.data2[0],2)
+          this.monitoringDate(this.datasOxygen.data3[0],3)
       }else if(b == 4){
-                        this.datas.data1.shift();
-          this.datas.data1.push(Math.round(this.heart + newheart5));
-          this.datas.data2.shift();
-          this.datas.data2.push(Math.round(this.heart + newheart4));
-                    this.datas.data3.shift();
-          this.datas.data3.push(Math.round(this.heart + newheart3));
-                    this.datas.data4.shift();
-          this.datas.data4.push(Math.round(this.heart + newheart2));
-                             this.monitoringDate(this.datas.data1[0],1)
-          this.monitoringDate(this.datas.data2[0],2)
-          this.monitoringDate(this.datas.data3[0],3)
-                             this.monitoringDate(this.datas.data4[0],4)
+                        this.datasOxygen.data1.shift();
+          this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen5));
+          this.datasOxygen.data2.shift();
+          this.datasOxygen.data2.push(Math.round(this.oxygen + newoxygen4));
+                    this.datasOxygen.data3.shift();
+          this.datasOxygen.data3.push(Math.round(this.oxygen + newoxygen3));
+                    this.datasOxygen.data4.shift();
+          this.datasOxygen.data4.push(Math.round(this.oxygen + newoxygen2));
+                             this.monitoringDate(this.datasOxygen.data1[0],1)
+          this.monitoringDate(this.datasOxygen.data2[0],2)
+          this.monitoringDate(this.datasOxygen.data3[0],3)
+                             this.monitoringDate(this.datasOxygen.data4[0],4)
 
       }else if(b==5){
-                                this.datas.data1.shift();
-          this.datas.data1.push(Math.round(this.heart + newheart5));
-          this.datas.data2.shift();
-          this.datas.data2.push(Math.round(this.heart + newheart4));
-                    this.datas.data3.shift();
-          this.datas.data3.push(Math.round(this.heart + newheart3));
-                    this.datas.data4.shift();
-          this.datas.data4.push(Math.round(this.heart + newheart2));
-                    this.datas.data5.shift();
-          this.datas.data5.push(Math.round(this.heart + newheart1));
-                                       this.monitoringDate(this.datas.data1[0],1)
-          this.monitoringDate(this.datas.data2[0],2)
-          this.monitoringDate(this.datas.data3[0],3)
-                             this.monitoringDate(this.datas.data4[0],4)
-                             this.monitoringDate(this.datas.data5[0],5)
+                                this.datasOxygen.data1.shift();
+          this.datasOxygen.data1.push(Math.round(this.oxygen + newoxygen5));
+          this.datasOxygen.data2.shift();
+          this.datasOxygen.data2.push(Math.round(this.oxygen + newoxygen4));
+                    this.datasOxygen.data3.shift();
+          this.datasOxygen.data3.push(Math.round(this.oxygen + newoxygen3));
+                    this.datasOxygen.data4.shift();
+          this.datasOxygen.data4.push(Math.round(this.oxygen + newoxygen2));
+                    this.datasOxygen.data5.shift();
+          this.datasOxygen.data5.push(Math.round(this.oxygen + newoxygen1));
+                                       this.monitoringDate(this.datasOxygen.data1[0],1)
+          this.monitoringDate(this.datasOxygen.data2[0],2)
+          this.monitoringDate(this.datasOxygen.data3[0],3)
+                             this.monitoringDate(this.datasOxygen.data4[0],4)
+                             this.monitoringDate(this.datasOxygen.data5[0],5)
       }
       if(this.$route.query.id == 1){
-      this.myCharts.setOption({
-            series: [{ data: this.datas.data1 }],
+      this.myChartOxygen.setOption({
+            series: [{ data: this.datasOxygen.data1 }],
           });
       }else if(this.$route.query.id == 2){
-      this.myCharts.setOption({
-            series: [{ data: this.datas.data1 },
-            { data: this.datas.data2 }],
+      this.myChartOxygen.setOption({
+            series: [{ data: this.datasOxygen.data1 },
+            { data: this.datasOxygen.data2 }],
           })}else if(this.$route.query.id == 3){
-      this.myCharts.setOption({
-            series: [{ data: this.datas.data1 },
-            { data: this.datas.data2 },{ data: this.datas.data3 }],
+      this.myChartOxygen.setOption({
+            series: [{ data: this.datasOxygen.data1 },
+            { data: this.datasOxygen.data2 },{ data: this.datasOxygen.data3 }],
           })}else if(this.$route.query.id == 4){
-      this.myCharts.setOption({
-            series: [{ data: this.datas.data1 },
-            { data: this.datas.data2 },{ data: this.datas.data3 },
-            ,{ data: this.datas.data4 }]
+      this.myChartOxygen.setOption({
+            series: [{ data: this.datasOxygen.data1 },
+            { data: this.datasOxygen.data2 },{ data: this.datasOxygen.data3 },
+            ,{ data: this.datasOxygen.data4 }]
           })}else if(this.$route.query.id == 5){
-      this.myCharts.setOption({
-            series: [{ data: this.datas.data1 },
-            { data: this.datas.data2 },{ data: this.datas.data3 },
-            ,{ data: this.datas.data4 },
-            { data: this.datas.data5 }]
+      this.myChartOxygen.setOption({
+            series: [{ data: this.datasOxygen.data1 },
+            { data: this.datasOxygen.data2 },{ data: this.datasOxygen.data3 },
+            ,{ data: this.datasOxygen.data4 },
+            { data: this.datasOxygen.data5 }]
           })}
 
       
 
-      this.myCharts.setOption({
+      this.myChartOxygen.setOption({
         xAxis: { data: this.time },
       });
     },
@@ -429,10 +358,12 @@ export default {
    
   },
   mounted() {
-    debugger;
-    this.myCharts = echarts.init(document.getElementById("myChart"));
+    // debugger;
+    this.myChartOxygen = echarts.init(document.getElementById("myChartOxygen"));
+    // debugger;
     this.createDate();
-    this.myCharts.setOption(this.option);
+    // debugger;
+    this.myChartOxygen.setOption(this.option);
     //  // debugger;
     // setInterval(this.addData(), 3);
 
@@ -440,7 +371,7 @@ export default {
       //间隔函数，每隔多少时间将数据进行更新,并请求后端接口
       this.addData();
       // getMonitoring()
-    }, 2000);
+    }, 6000);
   },
     beforeDestroy(){
       clearInterval(this.clearTimeSet);

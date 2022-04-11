@@ -81,10 +81,10 @@ export const constantRoutes = [
     redirect: 'noredirect',
     children: [
       {
-        path: 'heart',
-        component: () => import('@/views/simulator/notdetection/heart_rate_chart'),
+        path: 'showrate',
+        component: () => import('@/views/simulator/notdetection/show_rate'),
         hidden: true,
-        name: 'heart',
+        name: 'showrate',
         meta: { title: '设备信息显示', icon: 'user' }
       }
     ]

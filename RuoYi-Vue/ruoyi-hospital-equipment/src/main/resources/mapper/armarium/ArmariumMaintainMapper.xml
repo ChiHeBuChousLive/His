@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.armarium.mapper.ArmariumMaintainMapper">
+    
+    <resultMap type="ArmariumMaintain" id="ArmariumMaintainResult">
+        <result property="maintainId"    column="maintain_id"    />
+        <result property="maintainCause"    column="maintain_cause"    />
+        <result property="maintainPeople"    column="maintain_people"    />
+        <result property="maintainResult"    column="maintain_result"    />
+        <result property="maintainTime"    column="maintain_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectArmariumMaintainVo">
+        select maintain_id, maintain_cause, maintain_people, maintain_result, maintain_time, create_by, create_time, update_by, update_time, remark from armarium_maintain
+    </sql>
+
+    <select id="selectLastArmariumId" resultType="Long">
+            select maintain_id from armarium_maintain order by maintain_id desc;
+    </select>
+
+
+
+    <select id="selectArmariumMaintainList" parameterType="ArmariumMaintain" resultMap="ArmariumMaintainResult">
+        <include refid="selectArmariumMaintainVo"/>
+        <where>  
+            <if test="maintainPeople != null  and maintainPeople != ''"> and maintain_people = #{maintainPeople}</if>
+            <if test="maintainResult != null  and maintainResult != ''"> and maintain_result = #{maintainResult}</if>
+            <if test="maintainTime != null  and maintainTime != ''"> and maintain_time = #{maintainTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectArmariumMaintainByMaintainId" parameterType="Long" resultMap="ArmariumMaintainResult">
+        <include refid="selectArmariumMaintainVo"/>
+        where maintain_id = #{maintainId}
+    </select>
+        
+    <insert id="insertArmariumMaintain" parameterType="ArmariumMaintain" useGeneratedKeys="true" keyProperty="maintainId">
+        insert into armarium_maintain
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="maintainCause != null and maintainCause != ''">maintain_cause,</if>
+            <if test="maintainPeople != null and maintainPeople != ''">maintain_people,</if>
+            <if test="maintainResult != null">maintain_result,</if>
+            <if test="maintainTime != null">maintain_time,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="maintainCause != null and maintainCause != ''">#{maintainCause},</if>
+            <if test="maintainPeople != null and maintainPeople != ''">#{maintainPeople},</if>
+            <if test="maintainResult != null">#{maintainResult},</if>
+            <if test="maintainTime != null">#{maintainTime},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateArmariumMaintain" parameterType="ArmariumMaintain">
+        update armarium_maintain
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="maintainCause != null and maintainCause != ''">maintain_cause = #{maintainCause},</if>
+            <if test="maintainPeople != null and maintainPeople != ''">maintain_people = #{maintainPeople},</if>
+            <if test="maintainResult != null">maintain_result = #{maintainResult},</if>
+            <if test="maintainTime != null">maintain_time = #{maintainTime},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where maintain_id = #{maintainId}
+    </update>
+
+    <delete id="deleteArmariumMaintainByMaintainId" parameterType="Long">
+        delete from armarium_maintain where maintain_id = #{maintainId}
+    </delete>
+
+    <delete id="deleteArmariumMaintainByMaintainIds" parameterType="String">
+        delete from armarium_maintain where maintain_id in 
+        <foreach item="maintainId" collection="array" open="(" separator="," close=")">
+            #{maintainId}
+        </foreach>
+    </delete>
+</mapper>

@@ -216,6 +216,9 @@
         <module>ruoyi_oss</module>
         <module>ruoyi-sms</module>
         <module>ruoyi_caution</module>
+        <module>rouyi-RabbitMQ</module>
+        <module>ruoyi-MyCat</module>
+        <module>ruoyi-hospital-equipment</module>
     </modules>
     <packaging>pom</packaging>
 

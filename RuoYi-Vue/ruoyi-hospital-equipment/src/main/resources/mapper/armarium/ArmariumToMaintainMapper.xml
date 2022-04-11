@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.armarium.mapper.ArmariumToMaintainMapper">
+    
+    <resultMap type="ArmariumToMaintain" id="ArmariumToMaintainResult">
+        <result property="amId"    column="am_id"    />
+        <result property="armariumId"    column="armarium_id"    />
+        <result property="maintainId"    column="maintain_id"    />
+    </resultMap>
+
+    <sql id="selectArmariumToMaintainVo">
+        select am_id, armarium_id, maintain_id from armarium_to_maintain
+    </sql>
+
+    <select id="selectArmariumToMaintainList" parameterType="ArmariumToMaintain" resultMap="ArmariumToMaintainResult">
+        <include refid="selectArmariumToMaintainVo"/>
+        <where>  
+            <if test="armariumId != null "> and armarium_id = #{armariumId}</if>
+            <if test="maintainId != null "> and maintain_id = #{maintainId}</if>
+        </where>
+    </select>
+    
+    <select id="selectArmariumToMaintainByAmId" parameterType="Long" resultMap="ArmariumToMaintainResult">
+        <include refid="selectArmariumToMaintainVo"/>
+        where am_id = #{amId}
+    </select>
+
+
+
+    <select id="selectArmariumToMaintainByArmariumId" parameterType="Long" resultMap="ArmariumToMaintainResult">
+        <include refid="selectArmariumToMaintainVo"/>
+        where armarium_id = #{armariumId}
+    </select>
+
+    <select id="selectArmariumToMaintainByMaintainId" parameterType="Long" resultMap="ArmariumToMaintainResult">
+        <include refid="selectArmariumToMaintainVo"/>
+        where maintain_id = #{maintainId}
+    </select>
+
+
+
+
+
+
+        
+    <insert id="insertArmariumToMaintain" parameterType="ArmariumToMaintain" useGeneratedKeys="true" keyProperty="amId">
+        insert into armarium_to_maintain
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="armariumId != null">armarium_id,</if>
+            <if test="maintainId != null">maintain_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="armariumId != null">#{armariumId},</if>
+            <if test="maintainId != null">#{maintainId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateArmariumToMaintain" parameterType="ArmariumToMaintain">
+        update armarium_to_maintain
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="armariumId != null">armarium_id = #{armariumId},</if>
+            <if test="maintainId != null">maintain_id = #{maintainId},</if>
+        </trim>
+        where am_id = #{amId}
+    </update>
+
+    <delete id="deleteArmariumToMaintainByAmId" parameterType="Long">
+        delete from armarium_to_maintain where am_id = #{amId}
+    </delete>
+
+    <delete id="deleteArmariumToMaintainByAmIds" parameterType="String">
+        delete from armarium_to_maintain where am_id in 
+        <foreach item="amId" collection="array" open="(" separator="," close=")">
+            #{amId}
+        </foreach>
+    </delete>
+</mapper>

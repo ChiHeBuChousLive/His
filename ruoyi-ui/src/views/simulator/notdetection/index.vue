@@ -123,7 +123,7 @@ export default {
   methods: {
     submitForm() {
       // console.log(this.formData.switchNuber)
-      this.$router.push({ path: "/simulator/heart", query: {id: this.formData.switchNuber} });
+      this.$router.push({ path: "/simulator/showrate", query: {id: this.formData.switchNuber} });
       // this.$router.push('/simulator/heart')
       // this.$refs['elForm'].validate(valid => {
       //   if (!valid) return
