@@ -98,7 +98,7 @@
               <i class="el-icon-chat-dot-round"></i>
               <a href="javascript:;">欢迎加入我们</a>
             </p>
-            <h3 class="h3class">急求精通前端的朋友！！！</h3>
+            <h3 class="h3class"></h3>
           </div>
         </el-card>
       </el-col>
