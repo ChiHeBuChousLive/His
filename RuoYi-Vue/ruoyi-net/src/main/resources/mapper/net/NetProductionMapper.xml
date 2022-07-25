@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.net.mapper.NetProductionMapper">
+    
+    <resultMap type="NetProduction" id="NetProductionResult">
+        <result property="productionId"    column="production_id"    />
+        <result property="productionName"    column="production_name"    />
+        <result property="productionNumber"    column="production_number"    />
+        <result property="productionLeader"    column="production_leader"    />
+        <result property="productionPhone"    column="production_phone"    />
+        <result property="productionLocation"    column="production_location"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectNetProductionVo">
+        select production_id, production_name, production_number, production_leader, production_phone, production_location, status, create_by, create_time, update_by, update_time, remark from net_production
+    </sql>
+
+    <select id="selectNetProductionList" parameterType="NetProduction" resultMap="NetProductionResult">
+        <include refid="selectNetProductionVo"/>
+        <where>  
+            <if test="productionName != null  and productionName != ''"> and production_name like concat('%', #{productionName}, '%')</if>
+            <if test="productionNumber != null  and productionNumber != ''"> and production_number = #{productionNumber}</if>
+            <if test="productionLeader != null  and productionLeader != ''"> and production_leader = #{productionLeader}</if>
+            <if test="productionPhone != null  and productionPhone != ''"> and production_phone = #{productionPhone}</if>
+            <if test="productionLocation != null  and productionLocation != ''"> and production_location = #{productionLocation}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectNetProductionByProductionId" parameterType="Long" resultMap="NetProductionResult">
+        <include refid="selectNetProductionVo"/>
+        where production_id = #{productionId}
+    </select>
+        
+    <insert id="insertNetProduction" parameterType="NetProduction" useGeneratedKeys="true" keyProperty="productionId">
+        insert into net_production
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productionName != null and productionName != ''">production_name,</if>
+            <if test="productionNumber != null and productionNumber != ''">production_number,</if>
+            <if test="productionLeader != null">production_leader,</if>
+            <if test="productionPhone != null">production_phone,</if>
+            <if test="productionLocation != null">production_location,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productionName != null and productionName != ''">#{productionName},</if>
+            <if test="productionNumber != null and productionNumber != ''">#{productionNumber},</if>
+            <if test="productionLeader != null">#{productionLeader},</if>
+            <if test="productionPhone != null">#{productionPhone},</if>
+            <if test="productionLocation != null">#{productionLocation},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateNetProduction" parameterType="NetProduction">
+        update net_production
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productionName != null and productionName != ''">production_name = #{productionName},</if>
+            <if test="productionNumber != null and productionNumber != ''">production_number = #{productionNumber},</if>
+            <if test="productionLeader != null">production_leader = #{productionLeader},</if>
+            <if test="productionPhone != null">production_phone = #{productionPhone},</if>
+            <if test="productionLocation != null">production_location = #{productionLocation},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where production_id = #{productionId}
+    </update>
+
+    <delete id="deleteNetProductionByProductionId" parameterType="Long">
+        delete from net_production where production_id = #{productionId}
+    </delete>
+
+    <delete id="deleteNetProductionByProductionIds" parameterType="String">
+        delete from net_production where production_id in 
+        <foreach item="productionId" collection="array" open="(" separator="," close=")">
+            #{productionId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.net.mapper.NetDrugMapper">
+    
+    <resultMap type="NetDrug" id="NetDrugResult">
+        <result property="drugId"    column="drug_id"    />
+        <result property="drugName"    column="drug_name"    />
+        <result property="drugNumber"    column="drug_number"    />
+        <result property="drugProduction"    column="drug_production"    />
+        <result property="pdrugType"    column="pdrug_type"    />
+        <result property="pdrugPrescription"    column="pdrug_prescription"    />
+        <result property="drugUnits"    column="drug_units"    />
+        <result property="drugPrice"    column="drug_price"    />
+        <result property="drugStock"    column="drug_stock"    />
+        <result property="earlyWarning"    column="early_warning"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectNetDrugVo">
+        select drug_id, drug_name, drug_number, drug_production, pdrug_type, pdrug_prescription, drug_units, drug_price, drug_stock, early_warning, status, create_by, create_time, update_by, update_time, remark from net_drug
+    </sql>
+
+    <select id="selectNetDrugList" parameterType="NetDrug" resultMap="NetDrugResult">
+        <include refid="selectNetDrugVo"/>
+        <where>  
+            <if test="drugName != null  and drugName != ''"> and drug_name like concat('%', #{drugName}, '%')</if>
+            <if test="drugNumber != null  and drugNumber != ''"> and drug_number = #{drugNumber}</if>
+            <if test="drugProduction != null  and drugProduction != ''"> and drug_production = #{drugProduction}</if>
+            <if test="pdrugType != null  and pdrugType != ''"> and pdrug_type = #{pdrugType}</if>
+            <if test="pdrugPrescription != null  and pdrugPrescription != ''"> and pdrug_prescription = #{pdrugPrescription}</if>
+            <if test="earlyWarning != null  and earlyWarning != ''"> and early_warning = #{earlyWarning}</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectNetDrugByDrugId" parameterType="Long" resultMap="NetDrugResult">
+        <include refid="selectNetDrugVo"/>
+        where drug_id = #{drugId}
+    </select>
+        
+    <insert id="insertNetDrug" parameterType="NetDrug" useGeneratedKeys="true" keyProperty="drugId">
+        insert into net_drug
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="drugName != null and drugName != ''">drug_name,</if>
+            <if test="drugNumber != null and drugNumber != ''">drug_number,</if>
+            <if test="drugProduction != null">drug_production,</if>
+            <if test="pdrugType != null">pdrug_type,</if>
+            <if test="pdrugPrescription != null">pdrug_prescription,</if>
+            <if test="drugUnits != null">drug_units,</if>
+            <if test="drugPrice != null">drug_price,</if>
+            <if test="drugStock != null">drug_stock,</if>
+            <if test="earlyWarning != null">early_warning,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="drugName != null and drugName != ''">#{drugName},</if>
+            <if test="drugNumber != null and drugNumber != ''">#{drugNumber},</if>
+            <if test="drugProduction != null">#{drugProduction},</if>
+            <if test="pdrugType != null">#{pdrugType},</if>
+            <if test="pdrugPrescription != null">#{pdrugPrescription},</if>
+            <if test="drugUnits != null">#{drugUnits},</if>
+            <if test="drugPrice != null">#{drugPrice},</if>
+            <if test="drugStock != null">#{drugStock},</if>
+            <if test="earlyWarning != null">#{earlyWarning},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateNetDrug" parameterType="NetDrug">
+        update net_drug
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="drugName != null and drugName != ''">drug_name = #{drugName},</if>
+            <if test="drugNumber != null and drugNumber != ''">drug_number = #{drugNumber},</if>
+            <if test="drugProduction != null">drug_production = #{drugProduction},</if>
+            <if test="pdrugType != null">pdrug_type = #{pdrugType},</if>
+            <if test="pdrugPrescription != null">pdrug_prescription = #{pdrugPrescription},</if>
+            <if test="drugUnits != null">drug_units = #{drugUnits},</if>
+            <if test="drugPrice != null">drug_price = #{drugPrice},</if>
+            <if test="drugStock != null">drug_stock = #{drugStock},</if>
+            <if test="earlyWarning != null">early_warning = #{earlyWarning},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where drug_id = #{drugId}
+    </update>
+
+    <delete id="deleteNetDrugByDrugId" parameterType="Long">
+        delete from net_drug where drug_id = #{drugId}
+    </delete>
+
+    <delete id="deleteNetDrugByDrugIds" parameterType="String">
+        delete from net_drug where drug_id in 
+        <foreach item="drugId" collection="array" open="(" separator="," close=")">
+            #{drugId}
+        </foreach>
+    </delete>
+</mapper>
