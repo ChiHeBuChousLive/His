@@ -259,7 +259,7 @@ export default {
     async monitoringDate(data,Id){
       // console.log(data)
         if(data <75 || data>80&&smsflag[Id]!=1){
-            // var x = await getMonitoring(this.equipment)
+            var x = await getMonitoring(this.equipment)
              console.log("发送了短信")
              smsflag[Id]=1
         }
@@ -385,7 +385,7 @@ export default {
     setInterval(() => {
       //间隔函数，每隔多少时间将数据进行更新,并请求后端接口
       this.addData();
-      // getMonitoring()
+      getMonitoring()
     }, 2000);
   },
     beforeDestroy(){

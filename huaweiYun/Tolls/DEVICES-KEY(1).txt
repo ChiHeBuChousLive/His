@@ -1,0 +1,4 @@
+{
+    "device_id": "62d1163b4c7c4e3646bad582_temperature-001",
+    "secret": "wufan22722"
+}

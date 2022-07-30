@@ -1,0 +1,1 @@
+{"devices":[{"manufacturer_name":null,"manufacturer_id":"9b81cffa-f161-6838-3eec-d5c86e2e10e3","model":"2fd63258-d2da-f758-e0fc-ee361c44f66a","protocol_type":"MQTT","device_type":"medical-sensor","service_capabilities":[{"service_id":"basicsService","service_type":"basicsService","option":"Optional","description":"基础检测服务"}]}]}

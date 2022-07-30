@@ -1,0 +1,16 @@
+com.huaweicloud.sdk.iot.device
+com.huaweicloud.sdk.iot.device.bootstrap
+com.huaweicloud.sdk.iot.device.client
+com.huaweicloud.sdk.iot.device.client.listener
+com.huaweicloud.sdk.iot.device.client.requests
+com.huaweicloud.sdk.iot.device.devicelog
+com.huaweicloud.sdk.iot.device.devicelog.listener
+com.huaweicloud.sdk.iot.device.filemanager
+com.huaweicloud.sdk.iot.device.gateway
+com.huaweicloud.sdk.iot.device.gateway.requests
+com.huaweicloud.sdk.iot.device.ota
+com.huaweicloud.sdk.iot.device.service
+com.huaweicloud.sdk.iot.device.timesync
+com.huaweicloud.sdk.iot.device.transport
+com.huaweicloud.sdk.iot.device.transport.mqtt
+com.huaweicloud.sdk.iot.device.utils
