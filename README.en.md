@@ -1,5 +1,5 @@
 <p align="center">
-	<img width="20%" height="20%" alt="logo" src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcQC0y8aTOuv8OT.MRqLxVqnXVy2uAsTXRNTwdzazW9DV6mEeRj.vSIuFFnK*KUyfH*PhEhYTMvUGYHFm5nlNF8E!/b&bo=9AH0AQAAAAADFzI!&rf=viewer_4">
+	<img width="20%" height="20%" alt="" src="https://s2.loli.net/2022/09/30/FnaI1xqMUi7QXbp.png">
 </p>
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">His</h1>
 <h4 align="center">基于SpringBoot+Vue前后端分离的乡村医疗扩展系统
@@ -8,6 +8,9 @@
 	<a href="https://gitee.com/wuyao-kejiu/his"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
 	<a href="https://gitee.com/y_project/RuoYi-Vue/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
 </p>
+
+
+
 
 
 
@@ -128,51 +131,58 @@ npm run dev
 
 ## 数据库关系图
 
-<div>
-<img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca3el1Ih5HsB*6aVLd4AsLim1tTyIzVfxpKBZ8mjfpwZFTV75xSHvXgSr6r5jw6Sq.E!/b&bo=7waAAv0GhQIDKRs!&rf=viewer_4"/>
-<img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXU49d42iUY17syF34SSca1STnNtT.NUdH2tGTpeZ8a4BTD4nJN9zhihHQDiSTh9D3CqAStnSjiIbpbFyKLcYiA!/b&bo=8gWAAnsIkQMDKZg!&rf=viewer_4">
-</div>
+<img src="https://s2.loli.net/2022/09/30/TVYHxGs4SWBqI9l.png"  />
 
-
-
-
+<img src="https://s2.loli.net/2022/09/30/IO1WvbrX8tqkyfE.png"/>
+    
+<img src="https://s2.loli.net/2022/09/30/KMPsFl2y5Q1hpti.png" style="zoom: 67%;" />
 
 ## 演示图
 
 <table>
     <tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcVOl*JbMRwqEPusmOf3twOjuJPv*lvUi9jaGPVdUlFFjJ1WGM8A*YCW1cDAhYdBdkxw52QY3zH434LedoH5diFw!/b&bo=eQcQBHkHEAQDiaw!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRfXzyQtVXamITJ6pN8bzijmasRLc8g5jMOooZBlhd1dkcj94ZTccuVQusL8qwUYBu4Q1Ni5LybA0uQnZoo39MI!/b&bo=agWAAnwHdQMDGdw!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/4lk8CW2nFaREZ5T.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/r1iDBNsMYPOyCZH.png"/></td>
     </tr>
     <tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRfXzyQtVXamITJ6pN8bziiI3hjuYB3M7CoYtaj24a0qK0CyEy.91a6SkEwtkF0ucGF3zG.*YwC9fbkZrwHcbT8!/b&bo=FQaAAoQHFwMDKQo!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcZD3vF*u3GEeKhwJCX99ENUNJ3ZeY684B*kT8.CsPG9wIXDhoFK8HHQ0iSlWFqkBD.Ar9BcSqBcMnWc3MgpAQjs!/b&bo=agWAAucGMAMDOSM!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/jWVPC7nN543ZqmS.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/dje4Xxkn2hAJ6rt.png"/></td>
     </tr>
 	<tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcWnHYJd5UOAVYOXr5AnEZ2skQsEWDhKk722h93dHWWKb3ZinD.ZluIeZ4p27a5nI*v6chvJt4nFuIPDBJMr8sBI!/b&bo=PweAAn8HlgIDGWo!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcWnHYJd5UOAVYOXr5AnEZ2v*a9d3OQmv*50jz9dvgv9FK*81.Y8Cu0MoX7RzWhwWejcOSKi3t*DX3x5ck8RZpsI!/b&bo=mAWAAnAHUwMDGQQ!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/qHiSTNOhKy1ts2L.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/xsLApPiGS6v3MCH.png"/></td>
     </tr>	 
     <tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcXgpr9Jl0gx.rgd0FIswdr1Dlhg4OAALCQaMl*q7z56rtBhnGtCqL9e0IbWn8EA2yM1GakcGgrvBgIMsieavWjY!/b&bo=FgWAArcHywMDGdU!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTWILYGxwIDz0qJQMbwjYkD76Sv5B.ddnGbvsLrdHtoj7XPLR.tlNeyg1CTvRVI.F81roB0tfFIhmLyhPpPm29Y!/b&bo=9QWAAnIHIAMDGRg!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/qnSkbOiNIG68yDl.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/CXjNgbmhDYSrcQ3.png"/></td>
     </tr>
 	<tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTWILYGxwIDz0qJQMbwjYkCz41dGdZudZOYynHFxe.essmGxPzJuYJTWhFnC2t.fl1s4zvMc6ghn6bmIdJJF1Rc!/b&bo=9QWAAoMHJwMDGe4!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb1v3H9mXKwYQmOkJLneD0FAOOyTNVWCR5cOa8KQiAy0rlC42YqUe0O09IqOiHQZGVU!/b&bo=fwcPBH8HDwQDGTw!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/PBLQiNjTX1S47GH.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/wh4BxjF2Lyq71eQ.png"/></td>
     </tr>
 	<tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXhno*VssN928eLPLmHWQkyLrS8EDGbeKCV1.E7*0UorhL2jN4j8VkgViJxsG1yqLGk!/b&bo=nwaAAoUH1wIDGXA!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXhX..tI2qqV1A987*VK3nnD3xgmQhUzkTqHo3ChUSFrUzlhOuMHkJ3j2v51NZ6p*Q0!/b&bo=nQaAAoEH1gIDGXc!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/zpVYy85SxCeIrOd.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/RBKJV4c8fQzvNXY.png"/></td>
     </tr>
     <tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb3*D.6WgsjtAF9KI6YdSg09l3Jlx5PdrnHJfr36r7W6TlmG6sze91VsuOMC9qKSUjg!/b&bo=XQReAl0EXgIDGTw!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcTUHEJECZEBnqvOgX*k*XXjWrktcNyZqWunTH4qTpSC5ZsRaVSLt7GIpWg9bijyI6GJ746jKNe81Nvko25hpQnE!/b&bo=rgZ.Aq4GfgIDGTw!&rf=viewer_4"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/XxJ29MLDyRpeH5s.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/XqAev4UIFZiaTs7.png"/></td>
     </tr>
-     <tr>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mcRDoS7uJHkWSWr6gS0hmkb2arTeVzVoDsWvAKj22*4tKKs9Ev3q.BfNNMsGQHT3uB7hf2kKnmONU4.Vpv3cuhGc!/b&bo=gAJrBXYDgAcBGSA!&rf=viewer_4"/></td>
-        <td><img src="http://m.qpic.cn/psc?/V51tOoIn0CYg3u2sSOD33s4zPK3zu1xX/45NBuzDIW489QBoVep5mceU.6DIAvmDf*Yo1dSHq2afZAnaDKsnW2WE6pkRbfeowaP6kMXXI9Oh5DKHLO8Ed5dh0.vFeV9e3Do7VcdLQXPo!/b&bo=VAR7BFQEewQDKQw!&rf=viewer_4"/></td>
+    <tr>
+        <td><img src="https://s2.loli.net/2022/09/30/qeD1OuYTsRxXv2j.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/9qUhez52pAHmGgk.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://s2.loli.net/2022/09/30/fwCxkUWEK9ZdcYV.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/sojNrRT3pv9Wzd8.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://s2.loli.net/2022/09/30/ELWsgMvSGXzpKdZ.png"/></td>
+        <td><img src="https://s2.loli.net/2022/09/30/aSEbvCtVZUx73wy.png"/></td>
     </tr>
 </table>
+
+
 
 
 
